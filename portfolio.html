@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio - Loubie Designs</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Our Work</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="portfolio.html">Portfolio</a>
+    </nav>
+  </header>
+
+  <section class="portfolio-gallery">
+    <div class="thumbnail" onclick="openLightbox('photos/product1.jpg')">
+      <img src="photos/product1.jpg" alt="Quilted Bag" />
+      <span>Quilted Bag</span>
+    </div>
+    <div class="thumbnail" onclick="openLightbox('photos/product2.jpg')">
+      <img src="photos/product2.jpg" alt="Table Runner" />
+      <span>Table Runner</span>
+    </div>
+    <!-- Add more thumbnails as needed -->
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" />
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Loubie Designs</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
