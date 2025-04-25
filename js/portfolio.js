@@ -32,7 +32,7 @@ async function loadPortfolio() {
       grouped[category].forEach(photo => {
         const item = document.createElement('div');
         item.className = 'portfolio-item';
-        item.onclick = () => openLightbox(photo.src);
+        item.onclick = () => openLightbox(photo.src, photo.description);
 
         const img = document.createElement('img');
         img.src = photo.src;
@@ -55,10 +55,12 @@ async function loadPortfolio() {
   }
 }
 
-function openLightbox(imageSrc) {
+function openLightbox(imageSrc, imageDesc) {
     const lightbox = document.getElementById('lightbox');
     const img = document.getElementById('lightbox-img');
+    const caption = document.getElementById('lightbox-caption');
     img.src = imageSrc;
+    caption.textContent = imageDesc || '';
     lightbox.style.display = 'flex';
   }
   
