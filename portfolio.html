@@ -2,31 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Portfolio - Loubie Designs</title>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
+  <title>Portfolio | Loubie Designs</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <h1>Our Work</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="portfolio.html">Portfolio</a>
-    </nav>
-  </header>
 
-  <section class="portfolio-gallery" id="gallery">
-    <!-- JS will inject thumbnails here -->
-  </section>
+  <h1>Loubie Designs Portfolio</h1>
+  <div id="gallery"></div>
 
-  <!-- Lightbox -->
-  <div id="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img" />
+  <!-- Lightbox Modal -->
+  <div id="lightbox">
+    <div class="lightbox-content"></div>
   </div>
-
-  <footer>
-    <p>&copy; 2025 Loubie Designs</p>
-  </footer>
 
   <script src="js/script.js"></script>
 </body>

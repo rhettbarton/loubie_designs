@@ -1,6 +1,6 @@
 [
     { "src": "photos/product1.jpg", "label": "Table Runner 1", "category": "Table Runner", "description": "Red and White", "featured": true },
     { "src": "photos/product2.jpg", "label": "Table Runner 2", "category": "Table Runner", "description": "Green and White", "featured": true },
-    { "src": "photos/product3.jpg", "label": "Table Runner 3", "category": "Table Runner", "description": "Pastel", "featured": false }
+    { "src": "photos/product3.jpg", "label": "Table Runner 3", "category": "Other", "description": "Pastel", "featured": false }
   ]
   
