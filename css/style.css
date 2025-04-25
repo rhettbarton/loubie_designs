@@ -72,3 +72,30 @@ body {
     max-height: 80%;
   }
   
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .portfolio-item {
+    text-align: center;
+  }
+  
+  .portfolio-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .portfolio-item label {
+    display: block;
+    margin-top: 0.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
