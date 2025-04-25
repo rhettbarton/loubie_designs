@@ -15,9 +15,13 @@
     </nav>
   </header>
 
-  <section class="portfolio-gallery" id="gallery">
-    <!-- JS will inject thumbnails here -->
-  </section>
+  <h1>Portfolio</h1>
+  <div id="portfolio-container"></div>
+
+  <script src="js/main.js"></script>
+  <script>
+    loadPhotos('portfolio');
+  </script>
 
   <!-- Lightbox -->
   <div id="lightbox" onclick="closeLightbox()">
@@ -28,6 +32,6 @@
     <p>&copy; 2025 Loubie Designs</p>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

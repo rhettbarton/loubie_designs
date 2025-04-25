@@ -1,6 +1,17 @@
 [
-    { "src": "photos/product1.jpg", "label": "Table Runner 1", "category": "Table Runner", "description": "Red and White", "featured": "Yes" },
-    { "src": "photos/product2.jpg", "label": "Table Runner 2", "category": "Table Runner", "description": "Green and White", "featured": "Yes" },
-    { "src": "photos/product3.jpg", "label": "Table Runner 3", "category": "Table Runner", "description": "Pastel", "featured": "No" }
+    {
+      "url": "photos/product1.jpg",
+      "label": "Patchwork Star Quilt",
+      "description": "A cozy, hand-stitched star quilt made from repurposed fabrics.",
+      "category": "Quilts",
+      "featured": true
+    },
+    {
+      "url": "photos/product2.jpg",
+      "label": "Striped Table Runner",
+      "description": "Elegant table runner made with vintage fabric strips.",
+      "category": "Table Decor",
+      "featured": false
+    }
   ]
   
