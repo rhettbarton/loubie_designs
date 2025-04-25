@@ -15,18 +15,36 @@
     </nav>
   </header>
 
-  <section class="photo-reel">
-    <h2>Featured Creations</h2>
-    <div class="reel-container">
-      <img src="photos/product1.jpg" alt="Quilted Bag" />
-      <img src="photos/product2.jpg" alt="Table Runner" />
-      <img src="photos/product3.jpg" alt="Patchwork Quilt" />
-      <!-- Add more photos as needed -->
-    </div>
-  </section>
+  <h2>Featured Creations</h2>
+  <div id="featured-reel" class="photo-reel"></div>
 
   <footer>
     <p>&copy; 2025 Loubie Designs</p>
   </footer>
 </body>
+
+<script>
+    async function loadFeaturedPhotos() {
+      try {
+        const response = await fetch('photos.json');
+        const photos = await response.json();
+        const featured = photos.filter(photo => photo.featured);
+  
+        const reel = document.getElementById('featured-reel');
+        featured.forEach(photo => {
+          const img = document.createElement('img');
+          img.src = photo.src;
+          img.alt = photo.label || 'Quilted item';
+          img.className = 'featured-photo'; // Style this class in your CSS
+  
+          reel.appendChild(img);
+        });
+      } catch (error) {
+        console.error('Error loading featured photos:', error);
+      }
+    }
+  
+    document.addEventListener('DOMContentLoaded', loadFeaturedPhotos);
+  </script>
+  
 </html>

@@ -16,16 +16,24 @@ body {
     color: #333;
   }
   
-  .photo-reel .reel-container {
+  /* Featured Photo Reel (Homepage) */
+  .photo-reel {
     display: flex;
     overflow-x: auto;
-    gap: 10px;
-    padding: 1em;
+    gap: 1rem;
+    padding: 1rem 0;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
-  .reel-container img {
-    height: 150px;
-    border-radius: 5px;
+  .featured-photo {
+    max-height: 200px;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
   .portfolio-gallery {
