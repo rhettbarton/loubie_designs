@@ -1,6 +1,10 @@
 [
-    { "src": "photos/product1.jpg", "label": "Table Runner 1", "category": "Table Runner", "description": "Red and White", "featured": true },
-    { "src": "photos/product2.jpg", "label": "Table Runner 2", "category": "Table Runner", "description": "Green and White", "featured": false },
-    { "src": "photos/product3.jpg", "label": "Table Runner 3", "category": "Table Runner", "description": "Pastel", "featured": true }
+    { "src": "photos/TR-red-white.jpg", "label": "Table Runner 1", "category": "Table Runners", "description": "Red and White", "featured": true },
+    { "src": "photos/TR-green-white.jpg", "label": "Table Runner 2", "category": "Table Runners", "description": "Green and White", "featured": false },
+    { "src": "photos/TR-pastel.jpg", "label": "Table Runner 3", "category": "Table Runners", "description": "Pastel", "featured": true },
+    { "src": "photos/TR-flag.jpg", "label": "Table Runner 4", "category": "Table Runners", "description": "USA Flag", "featured": true },
+    { "src": "photos/TR-halloween.jpg", "label": "Table Runner 5", "category": "Table Runners", "description": "Halloween", "featured": false },
+    { "src": "photos/PM-checkers.jpg", "label": "Placemat 1", "category": "Placemats", "description": "Checkers", "featured": true },
+    { "src": "photos/BBQ-stars.jpg", "label": "Baby Quilt 1", "category": "Baby Quilts", "description": "Stars", "featured": true }
   ]
   
