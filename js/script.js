@@ -6,7 +6,24 @@ function openLightbox(imageSrc) {
   }
   
   function closeLightbox() {
-    const lightbox = document.getElementById('lightbox');
-    lightbox.style.display = 'none';
+    document.getElementById('lightbox').style.display = 'none';
   }
+  
+  // Load and render gallery
+  fetch('photos.json')
+    .then(res => res.json())
+    .then(data => {
+      const gallery = document.getElementById('gallery');
+      data.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'thumbnail';
+        div.onclick = () => openLightbox(item.src);
+  
+        div.innerHTML = `
+          <img src="${item.src}" alt="${item.label}">
+          <span>${item.label}</span>
+        `;
+        gallery.appendChild(div);
+      });
+    });
   
