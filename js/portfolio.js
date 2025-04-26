@@ -4,12 +4,13 @@ async function loadPortfolio() {
   try {
     const response = await fetch('photos.json');
     const photos = await response.json();
+    const portfolio = photos.filter(photo => photo.portfolio);
 
     const grid = document.getElementById('portfolio-grid');
     const grouped = {};
 
     // Group photos by category
-    photos.forEach(photo => {
+    portfolio.forEach(photo => {
       const category = photo.category || 'Uncategorized';
       if (!grouped[category]) {
         grouped[category] = [];

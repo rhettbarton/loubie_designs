@@ -1,11 +1,11 @@
 [
-    { "src": "photos/TR-red-white.jpg", "label": "Table Runner 1", "category": "Table Runners", "description": "Red and White", "featured": true },
-    { "src": "photos/TR-green-white.jpg", "label": "Table Runner 2", "category": "Table Runners", "description": "Green and White", "featured": false },
-    { "src": "photos/TR-pastel.jpg", "label": "Table Runner 3", "category": "Table Runners", "description": "Pastel", "featured": true },
-    { "src": "photos/TR-flag.jpg", "label": "Table Runner 4", "category": "Table Runners", "description": "USA Flag", "featured": true },
-    { "src": "photos/TR-halloween.jpg", "label": "Table Runner 5", "category": "Table Runners", "description": "Halloween", "featured": false },
-    { "src": "photos/PM-checkers.jpg", "label": "Placemat 1", "category": "Placemats", "description": "Checkers", "featured": true },
-    { "src": "photos/BBQ-stars.jpg", "label": "Baby Quilt 1", "category": "Baby Quilts", "description": "Stars", "featured": true },
-    { "src": "photos/craft-fair.jpg", "label": "", "category": "", "description": "Stars", "featured": true, "about": true }
+    { "src": "photos/TR-red-white.jpg", "label": "Table Runner 1", "category": "Table Runners", "description": "Red and White", "featured": true, "portfolio": true },
+    { "src": "photos/TR-green-white.jpg", "label": "Table Runner 2", "category": "Table Runners", "description": "Green and White", "featured": false, "portfolio": true },
+    { "src": "photos/TR-pastel.jpg", "label": "Table Runner 3", "category": "Table Runners", "description": "Pastel", "featured": true, "portfolio": true },
+    { "src": "photos/TR-flag.jpg", "label": "Table Runner 4", "category": "Table Runners", "description": "USA Flag", "featured": true, "portfolio": true },
+    { "src": "photos/TR-halloween.jpg", "label": "Table Runner 5", "category": "Table Runners", "description": "Halloween", "featured": false, "portfolio": true },
+    { "src": "photos/PM-checkers.jpg", "label": "Placemat 1", "category": "Placemats", "description": "Checkers", "featured": true, "portfolio": true },
+    { "src": "photos/BBQ-stars.jpg", "label": "Baby Quilt 1", "category": "Baby Quilts", "description": "Stars", "featured": true, "portfolio": true },
+    { "src": "photos/craft-fair.jpg", "label": "", "category": "", "description": "", "featured": false, "about": true, "portfolio": false }
   ]
   
