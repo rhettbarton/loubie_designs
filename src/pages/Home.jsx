@@ -16,7 +16,7 @@ function Home() {
           </div>
           
           <h1 className="tagline">
-            Handcrafted Quilts with Love & Precision
+            Handcrafted Quilted and Sewn Goods
           </h1>
           
           <p className="subtitle">
