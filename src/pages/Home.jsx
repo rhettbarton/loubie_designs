@@ -20,7 +20,7 @@ function Home() {
           </h1>
           
           <p className="subtitle">
-            Where traditional artistry meets modern elegance
+            Crafted in Boise, Idaho
           </p>
           
           <div className="cta-buttons">
