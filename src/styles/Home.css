@@ -1,4 +1,6 @@
 .home {
+  flex: 1;
+  width: 100%;
   min-height: calc(100vh - 80px);
   display: flex;
   align-items: center;
@@ -23,31 +25,13 @@
   margin-bottom: 48px;
 }
 
-.logo-placeholder {
-  display: inline-block;
-  padding: 24px;
-  background: white;
-  border-radius: 16px;
-  box-shadow: var(--shadow-medium);
-  transition: transform 0.3s ease;
-}
 
-.logo-placeholder:hover {
-  transform: translateY(-4px);
-}
-
-.logo-text {
-  font-family: var(--font-heading);
-  font-size: 36px;
-  font-weight: 700;
-  color: var(--primary-color);
-  letter-spacing: -0.5px;
-}
-
-/* When you add the actual logo image, use this instead: */
 .logo {
-  max-height: 120px;
+  max-height: 160px;
+  max-width: 160px;
   width: auto;
+  height: auto;
+  object-fit: contain;
   filter: drop-shadow(var(--shadow-subtle));
 }
 
@@ -80,6 +64,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .home {
+    flex: 1;
     min-height: calc(100vh - 70px);
   }
   
@@ -121,8 +106,9 @@
     margin-bottom: 32px;
   }
   
-  .logo-placeholder {
-    padding: 16px;
+  .logo {
+    max-height: 100px;
+    max-width: 100px;
   }
   
   .logo-text {

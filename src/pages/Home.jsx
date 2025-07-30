@@ -7,11 +7,11 @@ function Home() {
     <div className="home">
       <div className="hero-section">
         <div className="hero-content">
-          {/* Logo container - you'll replace this with actual logo image */}
+          {/* Logo container - ready for actual logo image */}
           <div className="logo-container">
             <div className="logo-placeholder">
               <img src="/logos/Loubie Designs Circle Green Background.png" alt="Loubie Designs Logo" className="logo" />
-              <span className="logo-text">Loubie Designs</span>
+              <img src="/images/logo.png" alt="Loubie Designs Logo" className="logo" style={{ display: 'none' }} />
             </div>
           </div>
           

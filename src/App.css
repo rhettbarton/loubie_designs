@@ -29,9 +29,19 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
 }
 
 .App {
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -39,7 +49,10 @@ body {
 
 .main-content {
   flex: 1;
+  width: 100%;
   padding-top: 80px; /* Account for fixed navigation */
+  display: flex;
+  flex-direction: column;
 }
 
 /* Button Styles */
