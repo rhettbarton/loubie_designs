@@ -15,7 +15,7 @@ function Footer() {
             <div className="contact-links">
               {/* Email */}
               <a 
-                href="mailto:hello@loubiedesigns.com" 
+                href="mailto:loubiedesigns@gmail.com" 
                 className="contact-link"
                 aria-label="Send us an email"
               >
@@ -25,7 +25,7 @@ function Footer() {
                     <polyline points="22,6 12,13 2,6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
-                <span className="contact-text">hello@loubiedesigns.com</span>
+                <span className="contact-text">loubiedesigns@gmail.com</span>
               </a>
               
               {/* Instagram */}
