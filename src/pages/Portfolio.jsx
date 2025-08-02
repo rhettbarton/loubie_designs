@@ -152,7 +152,7 @@ function Portfolio() {
           {/* Results Info */}
           <div className="results-info">
             <p className="results-count">
-              {filteredPhotos.length} {filteredPhotos.length === 1 ? 'quilt' : 'quilts'} 
+              {filteredPhotos.length} {filteredPhotos.length === 1 ? 'item' : 'items'} 
               {searchTerm && ` matching "${searchTerm}"`}
               {selectedCategory !== 'all' && ` in ${selectedCategory}`}
             </p>
