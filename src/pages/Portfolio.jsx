@@ -73,11 +73,11 @@ function Portfolio() {
 
   return (
     <div className="portfolio">
-      {/* Featured Quilts Reel */}
+      {/* Featured Reel */}
       {featuredPhotos.length > 0 && (
         <section className="featured-section">
           <div className="featured-container">
-            <h2 className="featured-title">Featured Quilts</h2>
+            <h2 className="featured-title">Featured Items</h2>
             <div className="featured-reel">
               {featuredPhotos.map((photo, index) => (
                 <div 
@@ -104,7 +104,7 @@ function Portfolio() {
       <section className="portfolio-main">
         <div className="portfolio-container">
           <div className="portfolio-header">
-            <h1 className="portfolio-title">My Quilts</h1>
+            <h1 className="portfolio-title">My Work</h1>
             
             {/* Search Bar */}
             <div className="search-container">
@@ -115,7 +115,7 @@ function Portfolio() {
                 </svg>
                 <input
                   type="text"
-                  placeholder="Search quilts..."
+                  placeholder="Search items..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="search-input"
@@ -143,7 +143,7 @@ function Portfolio() {
                   onClick={() => setSelectedCategory(category)}
                   className={`category-btn ${selectedCategory === category ? 'active' : ''}`}
                 >
-                  {category === 'all' ? 'All Quilts' : category.charAt(0).toUpperCase() + category.slice(1)}
+                  {category === 'all' ? 'All Items' : category.charAt(0).toUpperCase() + category.slice(1)}
                 </button>
               ))}
             </div>
@@ -183,7 +183,7 @@ function Portfolio() {
 
           {filteredPhotos.length === 0 && (
             <div className="no-results">
-              <p>No quilts found matching your criteria.</p>
+              <p>No items found matching your criteria.</p>
               <button 
                 onClick={() => {
                   setSearchTerm('')
@@ -191,7 +191,7 @@ function Portfolio() {
                 }}
                 className="btn btn-secondary"
               >
-                Show All Quilts
+                Show All Items
               </button>
             </div>
           )}
