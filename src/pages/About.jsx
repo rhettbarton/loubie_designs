@@ -7,9 +7,7 @@ function About() {
       <div className="about-hero">
         <div className="about-content">
           <div className="profile-container">
-              <div className="profile-placeholder">
-                <img src="/photos/profile.jpg" alt="Lauren" className="profile-photo" />
-              </div>
+            <img src="/photos/profile.jpg" alt="Lauren" className="profile-photo" />
           </div>
           
           <div className="about-text">
