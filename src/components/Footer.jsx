@@ -68,7 +68,7 @@ function Footer() {
         </div>
         
         <div className="footer-bottom">
-          <p className="copyright">© 2024 Loubie Designs. All rights reserved.</p>
+          <p className="copyright">© 2025 Loubie Designs. All rights reserved.</p>
         </div>
       </div>
     </footer>
