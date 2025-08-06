@@ -1,10 +1,72 @@
-[
-    { "file": "TR-red-white.jpg", "label": "Table Runner 1", "category": "Table Runners", "description": "Red and White", "featured": false, "portfolio": true },
-    { "file": "TR-green-white.jpg", "label": "Table Runner 2", "category": "Table Runners", "description": "Green and White", "featured": true, "portfolio": true },
-    { "file": "TR-pastel.jpg", "label": "Table Runner 3", "category": "Table Runners", "description": "Pastel", "featured": true, "portfolio": true },
-    { "file": "TR-flag.jpg", "label": "Table Runner 4", "category": "Table Runners", "description": "USA Flag", "featured": true, "portfolio": true },
-    { "file": "TR-halloween.jpg", "label": "Table Runner 5", "category": "Table Runners", "description": "Halloween", "featured": false, "portfolio": true },
-    { "file": "PM-checkers.jpg", "label": "Placemat 1", "category": "Placemats", "description": "Checkers", "featured": true, "portfolio": true },
-    { "file": "BBQ-stars.jpg", "label": "Baby Quilt 1", "category": "Baby Quilts", "description": "Stars", "featured": true, "portfolio": true }
+{
+  "products": [
+    {
+      "id": "table-runners",
+      "name": "Table Runners",
+      "description": "Beautiful handcrafted table runners for every occasion",
+      "category": "Table Runners",
+      "coverImage": "table-runners/TR-green-white.jpg",
+      "featured": true,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "table-runners/TR-green-white.jpg",
+          "label": "Green and White Table Runner",
+          "description": "A beautiful green and white table runner perfect for spring and summer dining."
+        },
+        {
+          "file": "table-runners/TR-pastel.jpg", 
+          "label": "Pastel Table Runner",
+          "description": "Soft pastel colors create a delicate and elegant table setting."
+        },
+        {
+          "file": "table-runners/TR-flag.jpg",
+          "label": "USA Flag Table Runner", 
+          "description": "Patriotic table runner featuring the American flag design."
+        },
+        {
+          "file": "table-runners/TR-red-white.jpg",
+          "label": "Red and White Table Runner",
+          "description": "Classic red and white color combination for timeless appeal."
+        },
+        {
+          "file": "table-runners/TR-halloween.jpg",
+          "label": "Halloween Table Runner",
+          "description": "Spooky Halloween-themed table runner for festive fall dining."
+        }
+      ]
+    },
+    {
+      "id": "placemats",
+      "name": "Placemats", 
+      "description": "Coordinating placemats to complete your table setting",
+      "category": "Placemats",
+      "coverImage": "placemats/PM-checkers.jpg",
+      "featured": true,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "placemats/PM-checkers.jpg",
+          "label": "Checkerboard Placemats",
+          "description": "Classic checkerboard pattern placemats for a timeless look."
+        }
+      ]
+    },
+    {
+      "id": "baby-quilts",
+      "name": "Baby Quilts",
+      "description": "Soft and cozy quilts perfect for little ones", 
+      "category": "Baby Quilts",
+      "coverImage": "baby-quilts/BBQ-stars.jpg",
+      "featured": true,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "baby-quilts/BBQ-stars.jpg",
+          "label": "Stars Baby Quilt",
+          "description": "A whimsical star-patterned baby quilt that's soft and perfect for nursery decor."
+        }
+      ]
+    }
   ]
-  
+}

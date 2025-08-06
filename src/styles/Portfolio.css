@@ -561,3 +561,333 @@
 .photo-item:nth-child(4) { animation-delay: 0.4s; }
 .photo-item:nth-child(5) { animation-delay: 0.5s; }
 .photo-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* Add these styles to your existing Portfolio.css */
+
+/* Product Card Enhancements */
+.product-card .photo-overlay {
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .photo-overlay {
+  transform: translateY(-2px);
+}
+
+.product-count {
+  font-size: 12px;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-top: 4px;
+  opacity: 0.9;
+}
+
+.featured-count {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-top: 4px;
+  display: block;
+}
+
+/* Enhanced Lightbox Styles */
+.product-lightbox {
+  max-width: 95vw;
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.lightbox-header {
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  flex-shrink: 0;
+}
+
+.lightbox-collection-title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.lightbox-image-counter {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.lightbox-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  flex: 1;
+  min-height: 0;
+}
+
+.lightbox-image-container {
+  position: relative;
+  background: var(--background-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Navigation Buttons */
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.nav-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-button {
+  left: 20px;
+}
+
+.next-button {
+  right: 20px;
+}
+
+/* Thumbnail Strip */
+.thumbnail-strip {
+  display: flex;
+  gap: 8px;
+  padding: 16px 24px;
+  overflow-x: auto;
+  background: white;
+  border-top: 1px solid var(--border-light);
+  justify-content: center;
+  max-width: 100%;
+}
+
+.thumbnail-strip::-webkit-scrollbar {
+  height: 6px;
+}
+
+.thumbnail-strip::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+  border-radius: 3px;
+}
+
+.thumbnail-strip::-webkit-scrollbar-thumb {
+  background: var(--text-secondary);
+  border-radius: 3px;
+}
+
+.thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+  flex-shrink: 0;
+  border: 2px solid transparent;
+}
+
+.thumbnail:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.thumbnail.active {
+  opacity: 1;
+  border-color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+/* Enhanced Lightbox Info */
+.lightbox-info {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  overflow-y: auto;
+}
+
+.lightbox-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.lightbox-category {
+  font-size: 14px;
+  color: var(--accent-color);
+  text-transform: capitalize;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.lightbox-description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 968px) {
+  .lightbox-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .lightbox-header {
+    padding: 20px;
+  }
+  
+  .lightbox-collection-title {
+    font-size: 20px;
+  }
+  
+  .nav-button {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .prev-button {
+    left: 16px;
+  }
+  
+  .next-button {
+    right: 16px;
+  }
+  
+  .thumbnail-strip {
+    padding: 12px 16px;
+    gap: 6px;
+  }
+  
+  .thumbnail {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .lightbox-info {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-lightbox {
+    max-width: 98vw;
+    max-height: 98vh;
+    border-radius: 12px;
+  }
+  
+  .lightbox-header {
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .lightbox-collection-title {
+    font-size: 18px;
+  }
+  
+  .lightbox-image-counter {
+    font-size: 13px;
+  }
+  
+  .nav-button {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .prev-button {
+    left: 12px;
+  }
+  
+  .next-button {
+    right: 12px;
+  }
+  
+  .thumbnail-strip {
+    padding: 10px 12px;
+    gap: 4px;
+  }
+  
+  .thumbnail {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .lightbox-info {
+    padding: 20px;
+  }
+  
+  .lightbox-title {
+    font-size: 18px;
+  }
+  
+  .lightbox-description {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lightbox-close {
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+  }
+  
+  .nav-button {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .nav-button svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .prev-button {
+    left: 8px;
+  }
+  
+  .next-button {
+    right: 8px;
+  }
+  
+  .thumbnail-strip {
+    justify-content: flex-start;
+  }
+  
+  .thumbnail {
+    width: 40px;
+    height: 40px;
+  }
+}
