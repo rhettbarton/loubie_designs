@@ -15,19 +15,19 @@ function About() {
             
             <div className="about-story">
               <p className="story-intro">
-                I'm a passionate quilter and textile artist based in the heart of our vibrant community. My love for quilting is deeply rooted in family traditions and the joy of creating something beautiful with my hands.
+                I'm a passionate quilter based in the Boise, ID. My love for quilting is deeply rooted in family traditions and the joy of creating something beautiful with my hands.
               </p>
               
               <p className="story-paragraph">
-                My journey with quilting began over two decades ago when my grandmother passed down her vintage Singer sewing machine along with a treasure trove of fabric scraps and unfinished projects. What started as a way to honor her memory has blossomed into a passionate pursuit of textile artistry.
+                My mom and grandma taught me how to sew at a young age. My interest was renewed in early 2024 when a friend invited me to quilt along with her. What started as a one-time project with a friend grew into a true passion. 
               </p>
               
               <p className="story-paragraph">
-                Each quilt I create is a unique blend of traditional techniques and contemporary design. I believe in the power of handcrafted beauty to transform spaces and create lasting memories. From intricate piecing to careful hand-quilting, every detail receives my full attention and care.
+                I believe in creating timeless quilts - pieces that can create lasting memories. Quilting is an art form that transcends the generations. It connects us to our heritage, sometimes with a contemporary spin. Each piece I make features intricate piecing and careful hand-binding, with care in every step.
               </p>
               
               <p className="story-paragraph">
-                When I'm not in my studio surrounded by colorful fabrics and the gentle hum of my sewing machine, you'll find me exploring local textile shops, attending quilting guilds, or drawing inspiration from the natural beauty of our community.
+                When I'm not in my studio surrounded by heaps of fabric, I can be found trying to keep up with my three kids, playing games with my husband and friends, and reading endless historical fiction (bonus points for romantic sub-plots).
               </p>
             </div>
             
