@@ -141,7 +141,6 @@ function Portfolio() {
                   />
                   <div className="featured-overlay">
                     <h3 className="featured-label">{product.name}</h3>
-                    <span className="featured-count">{product.images.length} items</span>
                   </div>
                 </div>
               ))}
@@ -154,7 +153,7 @@ function Portfolio() {
       <section className="portfolio-main">
         <div className="portfolio-container">
           <div className="portfolio-header">
-            <h1 className="portfolio-title">My Collections</h1>
+            <h1 className="portfolio-title">Browse My Projects</h1>
             
             {/* Search Bar */}
             <div className="search-container">
@@ -165,7 +164,7 @@ function Portfolio() {
                 </svg>
                 <input
                   type="text"
-                  placeholder="Search collections..."
+                  placeholder="Search items..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="search-input"
@@ -193,7 +192,7 @@ function Portfolio() {
                   onClick={() => setSelectedCategory(category)}
                   className={`category-btn ${selectedCategory === category ? 'active' : ''}`}
                 >
-                  {category === 'all' ? 'All Collections' : category.charAt(0).toUpperCase() + category.slice(1)}
+                  {category === 'all' ? 'All Items' : category.charAt(0).toUpperCase() + category.slice(1)}
                 </button>
               ))}
             </div>
@@ -202,7 +201,7 @@ function Portfolio() {
           {/* Results Info */}
           <div className="results-info">
             <p className="results-count">
-              {filteredProducts.length} {filteredProducts.length === 1 ? 'collection' : 'collections'} 
+              {filteredProducts.length} {filteredProducts.length === 1 ? 'item' : 'items'} 
               {searchTerm && ` matching "${searchTerm}"`}
               {selectedCategory !== 'all' && ` in ${selectedCategory}`}
             </p>
@@ -225,7 +224,6 @@ function Portfolio() {
                   <div className="photo-overlay">
                     <h3 className="photo-label">{product.name}</h3>
                     <div className="photo-category">{product.category}</div>
-                    <div className="product-count">{product.images.length} items in collection</div>
                   </div>
                 </div>
               </div>
@@ -234,7 +232,7 @@ function Portfolio() {
 
           {filteredProducts.length === 0 && (
             <div className="no-results">
-              <p>No collections found matching your criteria.</p>
+              <p>No items found matching your criteria.</p>
               <button 
                 onClick={() => {
                   setSearchTerm('')
@@ -242,7 +240,7 @@ function Portfolio() {
                 }}
                 className="btn btn-secondary"
               >
-                Show All Collections
+                Show All Items
               </button>
             </div>
           )}
