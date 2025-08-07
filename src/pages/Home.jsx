@@ -11,7 +11,6 @@ function Home() {
           <div className="logo-container">
             <div className="logo-placeholder">
               <img src="/logos/Loubie Designs Circle Green Background.png" alt="Loubie Designs Logo" className="logo" />
-              <img src="/images/logo.png" alt="Loubie Designs Logo" className="logo" style={{ display: 'none' }} />
             </div>
           </div>
           
