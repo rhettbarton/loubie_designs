@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import '../styles/Portfolio.css'
 import data from '../data/photos.json'
 
@@ -67,21 +67,21 @@ function Portfolio() {
     document.body.style.overflow = 'unset'
   }
 
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     if (selectedProduct) {
       setCurrentImageIndex((prev) => 
         prev === selectedProduct.images.length - 1 ? 0 : prev + 1
       )
     }
-  }
+  }, [selectedProduct])
 
-  const prevImage = () => {
+  const prevImage = useCallback(() => {
     if (selectedProduct) {
       setCurrentImageIndex((prev) => 
         prev === 0 ? selectedProduct.images.length - 1 : prev - 1
       )
     }
-  }
+  }, [selectedProduct])
 
   const goToImage = (index) => {
     setCurrentImageIndex(index)
@@ -109,7 +109,7 @@ function Portfolio() {
 
     window.addEventListener('keydown', handleKeyPress)
     return () => window.removeEventListener('keydown', handleKeyPress)
-  }, [selectedProduct])
+  }, [selectedProduct, prevImage, nextImage])
 
   if (loading) {
     return (
