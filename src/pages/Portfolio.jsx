@@ -1,66 +1,111 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import '../styles/Portfolio.css'
 import data from '../data/photos.json'
 
-
 function Portfolio() {
-  const [photos, setPhotos] = useState([])
-  const [filteredPhotos, setFilteredPhotos] = useState([])
+  const [products, setProducts] = useState([])
+  const [filteredProducts, setFilteredProducts] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
-  const [selectedPhoto, setSelectedPhoto] = useState(null)
+  const [selectedProduct, setSelectedProduct] = useState(null)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Load photos data
-    const loadPhotos = async () => {
+    // Load products data
+    const loadProducts = async () => {
       try {
-        
         // Filter only portfolio items
-        const portfolioItems = data.filter(photo => photo.portfolio === true)
-        setPhotos(portfolioItems)
-        setFilteredPhotos(portfolioItems)
+        const portfolioItems = data.products.filter(product => product.portfolio === true)
+        setProducts(portfolioItems)
+        setFilteredProducts(portfolioItems)
         setLoading(false)
       } catch (error) {
-        console.error('Error loading photos:', error)
+        console.error('Error loading products:', error)
         setLoading(false)
       }
     }
 
-    loadPhotos()
+    loadProducts()
   }, [])
 
   useEffect(() => {
-    // Filter photos based on category and search
-    let filtered = photos
+    // Filter products based on category and search
+    let filtered = products
 
     if (selectedCategory !== 'all') {
-      filtered = filtered.filter(photo => photo.category === selectedCategory)
+      filtered = filtered.filter(product => product.category === selectedCategory)
     }
 
     if (searchTerm) {
-      filtered = filtered.filter(photo => 
-        photo.label.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        photo.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        photo.category.toLowerCase().includes(searchTerm.toLowerCase())
+      filtered = filtered.filter(product => 
+        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.category.toLowerCase().includes(searchTerm.toLowerCase())
       )
     }
 
-    setFilteredPhotos(filtered)
-  }, [photos, selectedCategory, searchTerm])
+    setFilteredProducts(filtered)
+  }, [products, selectedCategory, searchTerm])
 
-  const featuredPhotos = photos.filter(photo => photo.featured === true)
-  const categories = ['all', ...new Set(photos.map(photo => photo.category))]
+  const featuredProducts = products.filter(product => product.featured === true)
+  const categories = ['all', ...new Set(products.map(product => product.category))]
 
-  const openLightbox = (photo) => {
-    setSelectedPhoto(photo)
+  const openLightbox = (product, imageIndex = 0) => {
+    setSelectedProduct(product)
+    setCurrentImageIndex(imageIndex)
     document.body.style.overflow = 'hidden'
   }
 
   const closeLightbox = () => {
-    setSelectedPhoto(null)
+    setSelectedProduct(null)
+    setCurrentImageIndex(0)
     document.body.style.overflow = 'unset'
   }
+
+  const nextImage = useCallback(() => {
+    if (selectedProduct) {
+      setCurrentImageIndex((prev) => 
+        prev === selectedProduct.images.length - 1 ? 0 : prev + 1
+      )
+    }
+  }, [selectedProduct])
+
+  const prevImage = useCallback(() => {
+    if (selectedProduct) {
+      setCurrentImageIndex((prev) => 
+        prev === 0 ? selectedProduct.images.length - 1 : prev - 1
+      )
+    }
+  }, [selectedProduct])
+
+  const goToImage = (index) => {
+    setCurrentImageIndex(index)
+  }
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (!selectedProduct) return
+      
+      switch(e.key) {
+        case 'Escape':
+          closeLightbox()
+          break
+        case 'ArrowLeft':
+          prevImage()
+          break
+        case 'ArrowRight':
+          nextImage()
+          break
+        default:
+          break
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyPress)
+    return () => window.removeEventListener('keydown', handleKeyPress)
+  }, [selectedProduct, prevImage, nextImage])
 
   if (loading) {
     return (
@@ -74,24 +119,24 @@ function Portfolio() {
   return (
     <div className="portfolio">
       {/* Featured Reel */}
-      {featuredPhotos.length > 0 && (
+      {featuredProducts.length > 0 && (
         <section className="featured-section">
           <div className="featured-container">
             <h2 className="featured-title">Featured Items</h2>
             <div className="featured-reel">
-              {featuredPhotos.map((photo, index) => (
+              {featuredProducts.map((product) => (
                 <div 
-                  key={index} 
+                  key={product.id} 
                   className="featured-item"
-                  onClick={() => openLightbox(photo)}
+                  onClick={() => openLightbox(product)}
                 >
                   <img 
-                    src={`/photos/${photo.file}`} 
-                    alt={photo.label}
+                    src={`/photos/${product.coverImage}`} 
+                    alt={product.name}
                     className="featured-image"
                   />
                   <div className="featured-overlay">
-                    <h3 className="featured-label">{photo.label}</h3>
+                    <h3 className="featured-label">{product.name}</h3>
                   </div>
                 </div>
               ))}
@@ -104,7 +149,7 @@ function Portfolio() {
       <section className="portfolio-main">
         <div className="portfolio-container">
           <div className="portfolio-header">
-            <h1 className="portfolio-title">My Work</h1>
+            <h1 className="portfolio-title">Browse My Projects</h1>
             
             {/* Search Bar */}
             <div className="search-container">
@@ -152,36 +197,36 @@ function Portfolio() {
           {/* Results Info */}
           <div className="results-info">
             <p className="results-count">
-              {filteredPhotos.length} {filteredPhotos.length === 1 ? 'item' : 'items'} 
+              {filteredProducts.length} {filteredProducts.length === 1 ? 'item' : 'items'} 
               {searchTerm && ` matching "${searchTerm}"`}
               {selectedCategory !== 'all' && ` in ${selectedCategory}`}
             </p>
           </div>
 
-          {/* Photo Grid */}
+          {/* Products Grid */}
           <div className="photo-grid">
-            {filteredPhotos.map((photo, index) => (
+            {filteredProducts.map((product) => (
               <div 
-                key={index} 
-                className="photo-item"
-                onClick={() => openLightbox(photo)}
+                key={product.id} 
+                className="photo-item product-card"
+                onClick={() => openLightbox(product)}
               >
                 <div className="photo-wrapper">
                   <img 
-                    src={`/photos/${photo.file}`} 
-                    alt={photo.label}
+                    src={`/photos/${product.coverImage}`} 
+                    alt={product.name}
                     className="photo-image"
                   />
                   <div className="photo-overlay">
-                    <h3 className="photo-label">{photo.label}</h3>
-                    <div className="photo-category">{photo.category}</div>
+                    <h3 className="photo-label">{product.name}</h3>
+                    <div className="photo-category">{product.category}</div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          {filteredPhotos.length === 0 && (
+          {filteredProducts.length === 0 && (
             <div className="no-results">
               <p>No items found matching your criteria.</p>
               <button 
@@ -198,10 +243,10 @@ function Portfolio() {
         </div>
       </section>
 
-      {/* Lightbox Modal */}
-      {selectedPhoto && (
+      {/* Enhanced Lightbox Modal with Image Navigation */}
+      {selectedProduct && (
         <div className="lightbox-overlay" onClick={closeLightbox}>
-          <div className="lightbox-container" onClick={(e) => e.stopPropagation()}>
+          <div className="lightbox-container product-lightbox" onClick={(e) => e.stopPropagation()}>
             <button 
               className="lightbox-close"
               onClick={closeLightbox}
@@ -213,21 +258,59 @@ function Portfolio() {
               </svg>
             </button>
             
+            <div className="lightbox-header">
+              <h2 className="lightbox-collection-title">{selectedProduct.name}</h2>
+            </div>
+            
             <div className="lightbox-content">
               <div className="lightbox-image-container">
                 <img 
-                  src={`/photos/${selectedPhoto.file}`} 
-                  alt={selectedPhoto.label}
+                  src={`/photos/${selectedProduct.images[currentImageIndex].file}`} 
                   className="lightbox-image"
                 />
+                
+                {selectedProduct.images.length > 1 && (
+                  <>
+                    <button 
+                      className="nav-button prev-button" 
+                      onClick={prevImage}
+                      aria-label="Previous image"
+                    >
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m15 18-6-6 6-6" stroke="currentColor" strokeWidth="2"/>
+                      </svg>
+                    </button>
+                    <button 
+                      className="nav-button next-button" 
+                      onClick={nextImage}
+                      aria-label="Next image"
+                    >
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m9 18 6-6-6-6" stroke="currentColor" strokeWidth="2"/>
+                      </svg>
+                    </button>
+                  </>
+                )}
               </div>
               
               <div className="lightbox-info">
-                <h2 className="lightbox-title">{selectedPhoto.label}</h2>
-                <div className="lightbox-category">{selectedPhoto.category}</div>
-                <p className="lightbox-description">{selectedPhoto.description}</p>
+                <p className="lightbox-description">{selectedProduct.description}</p>
               </div>
             </div>
+
+            {/* Thumbnail Strip */}
+            {selectedProduct.images.length > 1 && (
+              <div className="thumbnail-strip">
+                {selectedProduct.images.map((image, index) => (
+                  <img
+                    key={index}
+                    src={`/photos/${image.file}`}
+                    className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
+                    onClick={() => goToImage(index)}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       )}

@@ -1,10 +1,433 @@
-[
-    { "file": "TR-red-white.jpg", "label": "Table Runner 1", "category": "Table Runners", "description": "Red and White", "featured": false, "portfolio": true },
-    { "file": "TR-green-white.jpg", "label": "Table Runner 2", "category": "Table Runners", "description": "Green and White", "featured": true, "portfolio": true },
-    { "file": "TR-pastel.jpg", "label": "Table Runner 3", "category": "Table Runners", "description": "Pastel", "featured": true, "portfolio": true },
-    { "file": "TR-flag.jpg", "label": "Table Runner 4", "category": "Table Runners", "description": "USA Flag", "featured": true, "portfolio": true },
-    { "file": "TR-halloween.jpg", "label": "Table Runner 5", "category": "Table Runners", "description": "Halloween", "featured": false, "portfolio": true },
-    { "file": "PM-checkers.jpg", "label": "Placemat 1", "category": "Placemats", "description": "Checkers", "featured": true, "portfolio": true },
-    { "file": "BBQ-stars.jpg", "label": "Baby Quilt 1", "category": "Baby Quilts", "description": "Stars", "featured": true, "portfolio": true }
+{
+  "products": [
+    {
+      "id": "celtic-crossing-baby-quilt",
+      "name": "Celtic Crossing 2.0 Baby Quilt",
+      "description": "Celtic Crossing 2.0 pattern by Lo & Behold Stitchery. This was a commissioned piece using fabric pre-selected by the customer.",
+      "category": "Baby Quilts", 
+      "coverImage": "Baby Quilt/Celtic Crossing Baby Quilt/Celtic Crossing 1.jpg",
+      "featured": true,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Baby Quilt/Celtic Crossing Baby Quilt/Celtic Crossing 1.jpg"
+        },
+        {
+          "file": "Baby Quilt/Celtic Crossing Baby Quilt/Celtic Crossing 2.jpg"
+        }
+      ]
+    },
+    {
+      "id": "nine-patch-baby-quilt",
+      "name": "Nine Patch Baby Quilt",
+      "description": "Charming nine patch pattern using vintage floral fabrics and a gingham backing.",
+      "category": "Baby Quilts",
+      "coverImage": "Baby Quilt/Nine Patch Baby Quilt/Nine Patch 1.jpg",
+      "featured": true,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Baby Quilt/Nine Patch Baby Quilt/Nine Patch 1.jpg"
+        },
+        {
+          "file": "Baby Quilt/Nine Patch Baby Quilt/Nine Patch 2.jpg"
+        },
+        {
+          "file": "Baby Quilt/Nine Patch Baby Quilt/Nine Patch 3.jpg"
+        }
+      ]
+    },
+    {
+      "id": "sawtooth-star-baby-quilt",
+      "name": "Sawtooth Star Baby Quilt",
+      "description": "Sawtooth star pattern in two colorways using a variety of vintage fabrics.",
+      "category": "Baby Quilts",
+      "coverImage": "Baby Quilt/Sawtooth Star Baby Quilt/Sawtooth Star 1.jpg",
+      "featured": true,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Baby Quilt/Sawtooth Star Baby Quilt/Sawtooth Star 1.jpg"
+        },
+        {
+          "file": "Baby Quilt/Sawtooth Star Baby Quilt/Sawtooth Star 2.jpg"
+        },
+        {
+          "file": "Baby Quilt/Sawtooth Star Baby Quilt/Sawtooth Star 3.jpg"
+        },
+        {
+          "file": "Baby Quilt/Sawtooth Star Baby Quilt/Sawtooth Star 4.jpg"
+        },
+        {
+          "file": "Baby Quilt/Sawtooth Star Baby Quilt/Sawtooth Star 5.jpg"
+        },
+        {
+          "file": "Baby Quilt/Sawtooth Star Baby Quilt/Sawtooth Star 6.jpg"
+        }
+      ]
+    },
+    {
+      "id": "handmade-bag",
+      "name": "Handmade Bag",
+      "description": "Stylish and functional tote bag with quilted detail on the front and interior pockets.",
+      "category": "Bags",
+      "coverImage": "Bag/Bag 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Bag/Bag 1.jpg"
+        },
+        {
+          "file": "Bag/Bag 2.jpg"
+        },
+        {
+          "file": "Bag/Bag 3.jpg"
+        }
+      ]
+    },
+    {
+      "id": "baby-burp-cloths",
+      "name": "Baby Burp Cloths",
+      "description": "These burp cloths were commissioned to accompany a baby quilt, using fabric pre-selected by the customer.",
+      "category": "Burp Cloths",
+      "coverImage": "Burp Cloths/Burp Cloths 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Burp Cloths/Burp Cloths 1.jpg"
+        },
+        {
+          "file": "Burp Cloths/Burp Cloths 2.jpg"
+        }
+      ]
+    },
+    {
+      "id": "quilted-hot-pads",
+      "name": "Quilted Hot Pads",
+      "description": "Multi-layer quilted hot pads for kitchen use in a variety of colorways.",
+      "category": "Hot Pads",
+      "coverImage": "Hot Pad/Hot Pad 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Hot Pad/Hot Pad 1.jpg"
+        },
+        {
+          "file": "Hot Pad/Hot Pad 2.jpg"
+        },
+        {
+          "file": "Hot Pad/Hot Pad 3.jpg"
+        },
+        {
+          "file": "Hot Pad/Hot Pad 4.jpg"
+        }
+      ]
+    },
+    {
+      "id": "quilted-keychain",
+      "name": "Quilted Keychain",
+      "description": "Wristlets in an assortment of fabric and lobster clasp combinations.",
+      "category": "Keychains",
+      "coverImage": "Keychain/Keychain 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Keychain/Keychain 1.jpg"
+        }
+      ]
+    },
+    {
+      "id": "nine-square-placemat",
+      "name": "Nine Square Placemat",
+      "description": "Classic nine square pattern placemats using vintage floral fabrics.",
+      "category": "Placemats",
+      "coverImage": "Placemat/Nine Square Placemat/Nine Square Placemat 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Placemat/Nine Square Placemat/Nine Square Placemat 1.jpg"
+        },
+        {
+          "file": "Placemat/Nine Square Placemat/Nine Square Placemat 2.jpg"
+        },
+        {
+          "file": "Placemat/Nine Square Placemat/Nine Square Placemat 3.jpg"
+        },
+        {
+          "file": "Placemat/Nine Square Placemat/Nine Square Placemat 4.jpg"
+        }
+      ]
+    },
+    {
+      "id": "vintage-placemat",
+      "name": "Vintage Placemat",
+      "description": "A simple checkerboard pattern using vintage fabrics, bringing a pop of color to the table. Each placemat is unique, using individually chosen pieces of fabric, with three backing options.",
+      "category": "Placemats",
+      "coverImage": "Placemat/Vintage Placemat/Vintage Placemat 1.jpg",
+      "featured": true,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Placemat/Vintage Placemat/Vintage Placemat 1.jpg"
+        },
+        {
+          "file": "Placemat/Vintage Placemat/Vintage Placemat 2.jpg"
+        },
+        {
+          "file": "Placemat/Vintage Placemat/Vintage Placemat 3.jpg"
+        },
+        {
+          "file": "Placemat/Vintage Placemat/Vintage Placemat 4.jpg"
+        },
+        {
+          "file": "Placemat/Vintage Placemat/Vintage Placemat 5.jpg"
+        },
+        {
+          "file": "Placemat/Vintage Placemat/Vintage Placemat 6.jpg"
+        },
+        {
+          "file": "Placemat/Vintage Placemat/Vintage Placemat 7.jpg"
+        },
+        {
+          "file": "Placemat/Vintage Placemat/Vintage Placemat 8.jpg"
+        },
+        {
+          "file": "Placemat/Vintage Placemat/Vintage Placemat 9.jpg"
+        },
+        {
+          "file": "Placemat/Vintage Placemat/Vintage Placemat 10.jpg"
+        },
+        {
+          "file": "Placemat/Vintage Placemat/Vintage Placemat 11.jpg"
+        },
+        {
+          "file": "Placemat/Vintage Placemat/Vintage Placemat 12.jpg"
+        },
+        {
+          "file": "Placemat/Vintage Placemat/Vintage Placemat 13.jpg"
+        },
+        {
+          "file": "Placemat/Vintage Placemat/Vintage Placemat 14.jpg"
+        },
+        {
+          "file": "Placemat/Vintage Placemat/Vintage Placemat 15.jpg"
+        },
+        {
+          "file": "Placemat/Vintage Placemat/Vintage Placemat 16.jpg"
+        }
+      ]
+    },
+    {
+      "id": "4th-of-july-table-runner",
+      "name": "4th of July Table Runner",
+      "description": "Patriotic table runner perfect for Independence Day celebrations.",
+      "category": "Table Runners",
+      "coverImage": "Table Runner/4th of July Table Runner/4th of July Table Runner 1.jpg",
+      "featured": true,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Table Runner/4th of July Table Runner/4th of July Table Runner 1.jpg"
+        },
+        {
+          "file": "Table Runner/4th of July Table Runner/4th of July Table Runner 2.jpg"
+        },
+        {
+          "file": "Table Runner/4th of July Table Runner/4th of July Table Runner 3.jpg"
+        },
+        {
+          "file": "Table Runner/4th of July Table Runner/4th of July Table Runner 4.jpg"
+        },
+        {
+          "file": "Table Runner/4th of July Table Runner/4th of July Table Runner 5.jpg"
+        },
+        {
+          "file": "Table Runner/4th of July Table Runner/4th of July Table Runner 6.jpg"
+        },
+        {
+          "file": "Table Runner/4th of July Table Runner/4th of July Table Runner 7.jpg"
+        }
+      ]
+    },
+    {
+      "id": "halloween-table-runner",
+      "name": "Halloween Table Runner",
+      "description": "Spooky and whimsical Halloween-themed table runner for seasonal decorating.",
+      "category": "Table Runners",
+      "coverImage": "Table Runner/Halloween Table Runner/Halloween Table Runner 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Table Runner/Halloween Table Runner/Halloween Table Runner 1.jpg"
+        },
+        {
+          "file": "Table Runner/Halloween Table Runner/Halloween Table Runner 2.jpg"
+        },
+        {
+          "file": "Table Runner/Halloween Table Runner/Halloween Table Runner 3.jpg"
+        },
+        {
+          "file": "Table Runner/Halloween Table Runner/Halloween Table Runner 4.jpg"
+        },
+        {
+          "file": "Table Runner/Halloween Table Runner/Halloween Table Runner 5.jpg"
+        },
+        {
+          "file": "Table Runner/Halloween Table Runner/Halloween Table Runner 6.jpg"
+        }
+      ]
+    },
+    {
+      "id": "spring-table-runner",
+      "name": "Spring Table Runner",
+      "description": "Spring-themed Raaga Cross (pattern by monaluna) table runner with pastel floral elements.",
+      "category": "Table Runners",
+      "coverImage": "Table Runner/Spring Table Runner/Spring Table Runner 1.jpg",
+      "featured": true,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Table Runner/Spring Table Runner/Spring Table Runner 1.jpg"
+        },
+        {
+          "file": "Table Runner/Spring Table Runner/Spring Table Runner 2.jpg"
+        },
+        {
+          "file": "Table Runner/Spring Table Runner/Spring Table Runner 3.jpg"
+        },
+        {
+          "file": "Table Runner/Spring Table Runner/Spring Table Runner 4.jpg"
+        }
+      ]
+    },
+    {
+      "id": "st-patricks-day-table-runner",
+      "name": "St. Patrick's Day Table Runner",
+      "description": "Festive St. Patrick's Day gingham table runner for seasonal decorating.",
+      "category": "Table Runners",
+      "coverImage": "Table Runner/St. Patrick's Day Table Runner/St. Patrick's Day Table Runner 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Table Runner/St. Patrick's Day Table Runner/St. Patrick's Day Table Runner 1.jpg"
+        },
+        {
+          "file": "Table Runner/St. Patrick's Day Table Runner/St. Patrick's Day Table Runner 2.jpg"
+        },
+        {
+          "file": "Table Runner/St. Patrick's Day Table Runner/St. Patrick's Day Table Runner 3.jpg"
+        },
+        {
+          "file": "Table Runner/St. Patrick's Day Table Runner/St. Patrick's Day Table Runner 4.jpg"
+        }
+      ]
+    },
+    {
+      "id": "valentines-day-table-runner",
+      "name": "Valentine's Day Table Runner",
+      "description": "Romantic Valentine's Day table runners made by piecing the Maypole quilt (pattern by Suzy Quilts) and cutting it into strips.",
+      "category": "Table Runners",
+      "coverImage": "Table Runner/Valentine's Day Table Runner/Valentine's Day Table Runner 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Table Runner/Valentine's Day Table Runner/Valentine's Day Table Runner 1.jpg"
+        },
+        {
+          "file": "Table Runner/Valentine's Day Table Runner/Valentine's Day Table Runner 2.jpg"
+        },
+        {
+          "file": "Table Runner/Valentine's Day Table Runner/Valentine's Day Table Runner 3.jpg"
+        },
+        {
+          "file": "Table Runner/Valentine's Day Table Runner/Valentine's Day Table Runner 4.jpg"
+        },
+        {
+          "file": "Table Runner/Valentine's Day Table Runner/Valentine's Day Table Runner 5.jpg"
+        },
+        {
+          "file": "Table Runner/Valentine's Day Table Runner/Valentine's Day Table Runner 6.jpg"
+        },
+        {
+          "file": "Table Runner/Valentine's Day Table Runner/Valentine's Day Table Runner 7.jpg"
+        },
+        {
+          "file": "Table Runner/Valentine's Day Table Runner/Valentine's Day Table Runner 8.jpg"
+        }
+      ]
+    },
+    {
+      "id": "lattice-fence-throw-quilt",
+      "name": "Lattice Fence Throw Quilt",
+      "description": "This modern and funky Spring Picnic pattern by It's Only Fabric and Thread brings a fresh look to any space.",
+      "category": "Throw Quilts",
+      "coverImage": "Throw Quilt/Lattice Fence Throw Quilt/Lattice Fence Throw Quilt 1.jpg",
+      "featured": true,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Throw Quilt/Lattice Fence Throw Quilt/Lattice Fence Throw Quilt 1.jpg"
+        }
+      ]
+    },
+    {
+      "id": "reverb-throw-quilt",
+      "name": "Reverb Throw Quilt",
+      "description": "This modern Reverb pattern by Suzy Quilts bring a contemporary style to your home decor.",
+      "category": "Throw Quilts",
+      "coverImage": "Throw Quilt/Reverb Throw Quilt/Reverb Throw Quilt 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Throw Quilt/Reverb Throw Quilt/Reverb Throw Quilt 1.jpg"
+        }
+      ]
+    },
+    {
+      "id": "sticks-stones-throw-quilt",
+      "name": "Sticks & Stones Throw Quilt",
+      "description": "This Sticks & Stones pattern by Studio R Quilts uses a variety of floral elements in a blue colorway.",
+      "category": "Throw Quilts",
+      "coverImage": "Throw Quilt/Sticks & Stones Throw Quilt/Sticks & Stones Throw Quilt 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Throw Quilt/Sticks & Stones Throw Quilt/Sticks & Stones Throw Quilt 1.jpg"
+        },
+        {
+          "file": "Throw Quilt/Sticks & Stones Throw Quilt/Sticks & Stones Throw Quilt 2.jpg"
+        },
+        {
+          "file": "Throw Quilt/Sticks & Stones Throw Quilt/Sticks & Stones Throw Quilt 3.jpg"
+        }
+      ]
+    },
+    {
+      "id": "quilted-wall-hanging",
+      "name": "Quilted Wall Hanging",
+      "description": "This patriotic wall hanging brings a touch of Americana to your decor.",
+      "category": "Wall Hangings",
+      "coverImage": "Wall Hanging/Wall Hanging 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Wall Hanging/Wall Hanging 1.jpg"
+        },
+        {
+          "file": "Wall Hanging/Wall Hanging 2.jpg"
+        }
+      ]
+    }
   ]
-  
+}
