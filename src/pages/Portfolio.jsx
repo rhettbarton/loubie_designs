@@ -41,11 +41,7 @@ function Portfolio() {
       filtered = filtered.filter(product => 
         product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.images.some(img => 
-          img.label.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          img.description.toLowerCase().includes(searchTerm.toLowerCase())
-        )
+        product.category.toLowerCase().includes(searchTerm.toLowerCase())
       )
     }
 
@@ -270,7 +266,6 @@ function Portfolio() {
               <div className="lightbox-image-container">
                 <img 
                   src={`/photos/${selectedProduct.images[currentImageIndex].file}`} 
-                  alt={selectedProduct.images[currentImageIndex].label}
                   className="lightbox-image"
                 />
                 
@@ -299,9 +294,7 @@ function Portfolio() {
               </div>
               
               <div className="lightbox-info">
-                <h3 className="lightbox-title">{selectedProduct.images[currentImageIndex].label}</h3>
-                <div className="lightbox-category">{selectedProduct.category}</div>
-                <p className="lightbox-description">{selectedProduct.images[currentImageIndex].description}</p>
+                <p className="lightbox-description">{selectedProduct.description}</p>
               </div>
             </div>
 
@@ -312,7 +305,6 @@ function Portfolio() {
                   <img
                     key={index}
                     src={`/photos/${image.file}`}
-                    alt={image.label}
                     className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
                     onClick={() => goToImage(index)}
                   />
