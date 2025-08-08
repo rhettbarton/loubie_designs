@@ -29,6 +29,10 @@ function About() {
               <p className="story-paragraph">
                 When I'm not in my studio surrounded by heaps of fabric, I can be found trying to keep up with my three kids, playing games with my husband and friends, and reading endless historical fiction (bonus points for romantic sub-plots).
               </p>
+
+              <p className="story-paragraph">
+                I hope you find something here that speaks to you, whether it's a quilt for your home or a gift for a loved one. Reach out to me for custom orders or if you have any questions about my work. Follow me on social media to see my latest projects and find out where I'll be selling locally next. Thank you for visiting my site!
+              </p>
             </div>
             
             <div className="about-cta">
