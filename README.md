@@ -155,6 +155,40 @@ This project is configured for AWS Amplify deployment:
 5. Open a Pull Request targeting `stage`
 6. After changes have been tested in `stage`, open a Pull Request targeting `prod` 
 
+## Local Development Setup
+
+# Create Local Environment File
+Create a .env.local file in your project root:
+
+```bash
+# .env.local
+REACT_APP_AWS_REGION=${region}
+REACT_APP_PHOTO_CDN_DOMAIN=your-cloudfront-domain.cloudfront.net
+REACT_APP_DYNAMO_TABLE_NAME=loubie-designs-photo-metadata-dev-${account}-${region}
+REACT_APP_ENVIRONMENT=dev
+```
+
+
+# 0. Get Variables from Infrastructure Stack
+
+```bash
+aws cloudformation describe-stacks --stack-name LoubieDesignsInfrastructureStack-${environment} --query "Stacks[0].Outputs"
+```
+
+# 1. Get your Amplify App ID
+```bash
+aws amplify list-apps
+```
+
+# 2. Set environment variables via CLI (replace )
+```bash
+aws amplify update-app \
+  --app-id your-amplify-app-id \
+  --environment-variables \
+    REACT_APP_AWS_REGION=your-region, \
+    REACT_APP_PHOTO_CDN_DOMAIN=your-domain.cloudfront.net, \ REACT_APP_DYNAMO_TABLE_NAME=your-table-name
+```
+
 ## 📄 License
 
 This project is private and proprietary. All rights reserved by Loubie Designs.
