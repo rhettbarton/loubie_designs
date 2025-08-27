@@ -155,38 +155,38 @@ This project is configured for AWS Amplify deployment:
 5. Open a Pull Request targeting `stage`
 6. After changes have been tested in `stage`, open a Pull Request targeting `prod` 
 
-## Local Development Setup
 
-# Create Local Environment File
-Create a .env.local file in your project root:
+# Connecting to AWS Resources
 
-```bash
-# .env.local
-REACT_APP_AWS_REGION=${region}
-REACT_APP_PHOTO_CDN_DOMAIN=your-cloudfront-domain.cloudfront.net
-REACT_APP_DYNAMO_TABLE_NAME=loubie-designs-photo-metadata-dev-${account}-${region}
-REACT_APP_ENVIRONMENT=dev
-```
-
-
-# 0. Get Variables from Infrastructure Stack
+## 1. Get Variables from Infrastructure Stack
 
 ```bash
 aws cloudformation describe-stacks --stack-name LoubieDesignsInfrastructureStack-${environment} --query "Stacks[0].Outputs"
 ```
 
-# 1. Get your Amplify App ID
+## 2. Get your Amplify App ID
 ```bash
 aws amplify list-apps
 ```
 
-# 2. Set environment variables via CLI (replace )
+## 3a. (Stage/Prod) Set environment variables via CLI (replace values)
 ```bash
 aws amplify update-app \
-  --app-id your-amplify-app-id \
+  --app-id <your-app-id> \
   --environment-variables \
-    REACT_APP_AWS_REGION=your-region, \
-    REACT_APP_PHOTO_CDN_DOMAIN=your-domain.cloudfront.net, \ REACT_APP_DYNAMO_TABLE_NAME=your-table-name
+    REACT_APP_AWS_REGION=<your-region>,REACT_APP_PHOTO_CDN_DOMAIN=<your-domain>.cloudfront.net,REACT_APP_DYNAMO_TABLE_NAME=<your-table> \
+  --profile <your-profile>
+```
+
+## 3b. (Dev) Create Local Environment File
+Create a .env.local file in your project root:
+
+```bash
+# .env.local
+REACT_APP_AWS_REGION=<your-region>
+REACT_APP_PHOTO_CDN_DOMAIN=<your-domain>.cloudfront.net
+REACT_APP_DYNAMO_TABLE_NAME=<your-table>
+REACT_APP_ENVIRONMENT=dev
 ```
 
 ## 📄 License
