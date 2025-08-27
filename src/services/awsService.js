@@ -2,9 +2,9 @@
 
 // AWS Configuration - These should be set as environment variables in Amplify
 const AWS_CONFIG = {
-  region: process.env.REACT_APP_AWS_REGION || 'us-west-2',
-  photoCdnDomain: process.env.REACT_APP_PHOTO_CDN_DOMAIN,
-  dynamoTableName: process.env.REACT_APP_DYNAMO_TABLE_NAME
+  region: import.meta.env.REACT_APP_AWS_REGION || 'us-west-2',
+  photoCdnDomain: import.meta.env.REACT_APP_PHOTO_CDN_DOMAIN,
+  dynamoTableName: import.meta.env.REACT_APP_DYNAMO_TABLE_NAME
 };
 
 // AWS SDK v3 imports (you'll need to install these)
