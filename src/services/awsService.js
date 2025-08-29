@@ -89,8 +89,7 @@ const transformDynamoItem = (item) => {
     coverImageUrl: `https://${AWS_CONFIG.photoCdnDomain}/${product.folderPath}/${product.coverImage}`,
     featured: product.featured === true || product.featured === 'true',
     portfolio: product.portfolio === true || product.portfolio === 'true',
-    folderPath: product.folderPath,
-    images: images
+    folderPath: product.folderPath
   };
 };
 
@@ -113,7 +112,7 @@ export const fetchProducts = async () => {
       TableName: AWS_CONFIG.dynamoTableName,
       FilterExpression: 'portfolio = :portfolio',
       ExpressionAttributeValues: marshall({
-        ':portfolio': true
+        ':portfolio': "true"
       })
     });
 
@@ -161,8 +160,8 @@ export const fetchFeaturedProducts = async () => {
       TableName: AWS_CONFIG.dynamoTableName,
       FilterExpression: 'featured = :featured AND portfolio = :portfolio',
       ExpressionAttributeValues: marshall({
-        ':featured': true,
-        ':portfolio': true
+        ':featured': "true",
+        ':portfolio': "true"
       })
     });
 
@@ -254,9 +253,8 @@ const FALLBACK_DATA = {
       category: 'Sample',
       coverImage: '',
       coverImageUrl: '',
-      featured: false,
-      portfolio: true,
-      images: []
+      featured: "false",
+      portfolio: "true"
     }
   ]
 };
