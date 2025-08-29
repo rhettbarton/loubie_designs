@@ -4,7 +4,8 @@ import '../styles/Portfolio.css'
 import { 
   fetchProductsWithFallback, 
   fetchFeaturedProductsWithFallback,
-  getImageUrl 
+  getImageUrl,
+  debugCredentials
 } from '../services/awsService'
 
 function Portfolio() {
@@ -19,6 +20,13 @@ function Portfolio() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
+
+    // debugCredentials().then(() => {
+    //   console.log('Credentials working, proceeding with data fetch...');
+    // }).catch(error => {
+    //   console.error('Credential issue:', error);
+    // });
+
     // Load products data from AWS
     const loadProducts = async () => {
       try {
