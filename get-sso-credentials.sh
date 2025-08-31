@@ -76,12 +76,6 @@ TABLE_NAME=$(aws cloudformation describe-stacks \
     --query "Stacks[0].Outputs[?OutputKey=='PhotoMetadataTableName'].OutputValue" \
     --output text 2>/dev/null)
 
-S3_BUCKET_NAME=$(aws cloudformation describe-stacks \
-    --stack-name LoubieDesignsInfrastructureStack-dev \
-    --profile $PROFILE_NAME \
-    --query "Stacks[0].Outputs[?OutputKey=='PhotoBucketName'].OutputValue" \
-    --output text 2>/dev/null)
-
 if [ -z "$CDN_DOMAIN" ] || [ "$CDN_DOMAIN" = "None" ]; then
     echo "⚠️ Warning: Could not get CloudFront domain from CDK stack"
     CDN_DOMAIN="your-cloudfront-domain.cloudfront.net"
@@ -92,15 +86,9 @@ if [ -z "$TABLE_NAME" ] || [ "$TABLE_NAME" = "None" ]; then
     TABLE_NAME="your-dynamodb-table-name"
 fi
 
-if [ -z "$S3_BUCKET_NAME" ] || [ "$S3_BUCKET_NAME" = "None" ]; then
-    echo "⚠️ Warning: Could not get S3 bucket name from CDK stack"
-    S3_BUCKET_NAME="your-s3-bucket-name"
-fi
-
 echo "📋 Stack outputs:"
 echo "   - CDN Domain: $CDN_DOMAIN"
 echo "   - Table Name: $TABLE_NAME"
-echo "   - S3 Bucket Name: $S3_BUCKET_NAME"
 echo ""
 
 # Step 4: Create .env.local file
@@ -149,7 +137,6 @@ VITE_AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 VITE_AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN
 VITE_AWS_REGION=us-west-2
 VITE_PHOTO_CDN_DOMAIN=$CDN_DOMAIN
-VITE_S3_BUCKET_NAME=$S3_BUCKET_NAME
 VITE_DYNAMO_TABLE_NAME=$TABLE_NAME
 VITE_ENVIRONMENT=dev
 
