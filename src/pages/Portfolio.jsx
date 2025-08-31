@@ -4,8 +4,7 @@ import '../styles/Portfolio.css'
 import { 
   fetchProductsWithFallback, 
   fetchFeaturedProductsWithFallback,
-  getImageUrl,
-  debugCredentials
+  getImageUrl
 } from '../services/awsService'
 
 function Portfolio() {
