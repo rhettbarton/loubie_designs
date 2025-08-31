@@ -356,12 +356,6 @@ function Portfolio() {
                       </>
                     )}
                     
-                    {/* Image counter */}
-                    {selectedProduct.images.length > 1 && (
-                      <div className="image-counter">
-                        {currentImageIndex + 1} / {selectedProduct.images.length}
-                      </div>
-                    )}
                   </div>
                 </>
               ) : (
