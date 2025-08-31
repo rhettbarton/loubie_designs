@@ -20,13 +20,6 @@ function Portfolio() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-
-    // debugCredentials().then(() => {
-    //   console.log('Credentials working, proceeding with data fetch...');
-    // }).catch(error => {
-    //   console.error('Credential issue:', error);
-    // });
-
     // Load products data from AWS
     const loadProducts = async () => {
       try {
@@ -79,21 +72,22 @@ function Portfolio() {
   const categories = ['all', ...new Set(products.map(product => product.category))]
 
   const openLightbox = (product, imageIndex = 0) => {
-    // For now, we'll create a single image array with the cover image
-    // In a full implementation, you'd fetch all images from the S3 folder
-    const productWithImages = {
-      ...product,
-      images: product.images.length > 0 ? product.images : [
-        {
-          file: product.coverImage,
-          url: product.coverImageUrl
-        }
-      ]
+    // Images are already loaded from DynamoDB files list
+    console.log('Opening lightbox for product:', product);
+    console.log('Product images from files list:', product.images);
+    
+    // Use images from the files list
+    let images = product.images && product.images.length > 0 ? product.images : [];
+    
+    // Fallback to cover image if no images
+    if (images.length === 0 && product.coverImage) {
+      images = [{ file: product.coverImage, url: product.coverImageUrl }];
     }
     
-    setSelectedProduct(productWithImages)
-    setCurrentImageIndex(imageIndex)
-    document.body.style.overflow = 'hidden'
+    const productWithImages = { ...product, images };
+    setSelectedProduct(productWithImages);
+    setCurrentImageIndex(Math.min(imageIndex, images.length - 1));
+    document.body.style.overflow = 'hidden';
   }
 
   const closeLightbox = () => {
@@ -103,7 +97,7 @@ function Portfolio() {
   }
 
   const nextImage = useCallback(() => {
-    if (selectedProduct) {
+    if (selectedProduct && selectedProduct.images.length > 0) {
       setCurrentImageIndex((prev) => 
         prev === selectedProduct.images.length - 1 ? 0 : prev + 1
       )
@@ -111,7 +105,7 @@ function Portfolio() {
   }, [selectedProduct])
 
   const prevImage = useCallback(() => {
-    if (selectedProduct) {
+    if (selectedProduct && selectedProduct.images.length > 0) {
       setCurrentImageIndex((prev) => 
         prev === 0 ? selectedProduct.images.length - 1 : prev - 1
       )
@@ -327,39 +321,54 @@ function Portfolio() {
             </div>
             
             <div className="lightbox-content">
-              <div className="lightbox-image-container">
-                <img 
-                  src={selectedProduct.images[currentImageIndex]?.url || getImageUrl(selectedProduct.images[currentImageIndex]?.file)} 
-                  alt={selectedProduct.name}
-                  className="lightbox-image"
-                  onError={(e) => {
-                    console.warn(`Failed to load lightbox image: ${e.target.src}`)
-                  }}
-                />
-                
-                {selectedProduct.images.length > 1 && (
-                  <>
-                    <button 
-                      className="nav-button prev-button" 
-                      onClick={prevImage}
-                      aria-label="Previous image"
-                    >
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="m15 18-6-6 6-6" stroke="currentColor" strokeWidth="2"/>
-                      </svg>
-                    </button>
-                    <button 
-                      className="nav-button next-button" 
-                      onClick={nextImage}
-                      aria-label="Next image"
-                    >
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="m9 18 6-6-6-6" stroke="currentColor" strokeWidth="2"/>
-                      </svg>
-                    </button>
-                  </>
-                )}
-              </div>
+              {selectedProduct.images && selectedProduct.images.length > 0 ? (
+                <>
+                  <div className="lightbox-image-container">
+                    <img 
+                      src={selectedProduct.images[currentImageIndex]?.url || getImageUrl(selectedProduct.images[currentImageIndex]?.file)} 
+                      alt={`${selectedProduct.name} ${currentImageIndex + 1}`}
+                      className="lightbox-image"
+                      onError={(e) => {
+                        console.warn(`Failed to load lightbox image: ${e.target.src}`)
+                      }}
+                    />
+                    
+                    {selectedProduct.images.length > 1 && (
+                      <>
+                        <button 
+                          className="nav-button prev-button" 
+                          onClick={prevImage}
+                          aria-label="Previous image"
+                        >
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m15 18-6-6 6-6" stroke="currentColor" strokeWidth="2"/>
+                          </svg>
+                        </button>
+                        <button 
+                          className="nav-button next-button" 
+                          onClick={nextImage}
+                          aria-label="Next image"
+                        >
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m9 18 6-6-6-6" stroke="currentColor" strokeWidth="2"/>
+                          </svg>
+                        </button>
+                      </>
+                    )}
+                    
+                    {/* Image counter */}
+                    {selectedProduct.images.length > 1 && (
+                      <div className="image-counter">
+                        {currentImageIndex + 1} / {selectedProduct.images.length}
+                      </div>
+                    )}
+                  </div>
+                </>
+              ) : (
+                <div className="no-images">
+                  <p>No images available for this item</p>
+                </div>
+              )}
               
               <div className="lightbox-info">
                 <p className="lightbox-description">{selectedProduct.description}</p>
@@ -367,7 +376,7 @@ function Portfolio() {
             </div>
 
             {/* Thumbnail Strip */}
-            {selectedProduct.images.length > 1 && (
+            {selectedProduct.images && selectedProduct.images.length > 1 && (
               <div className="thumbnail-strip">
                 {selectedProduct.images.map((image, index) => (
                   <img
