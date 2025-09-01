@@ -1,5 +1,5 @@
 #!/bin/bash
-# set-app-env-vars.sh - Get SSO credentials directly for React development
+# set-app-env-vars.sh
 
 set -e
 
