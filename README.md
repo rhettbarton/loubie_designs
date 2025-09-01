@@ -170,6 +170,23 @@ Create a .env.local file in your project root:
 bash create-local-dev-env.sh
 ```
 
+## Cleaning up dependecies
+
+```bash
+npm install depcheck --save-dev
+```
+
+### Preview changes
+```bash
+node sync-dependencies.js --dry-run
+```
+
+### Apply changes
+```bash
+node sync-dependencies.js
+```
+
+
 ## 📄 License
 
 This project is private and proprietary. All rights reserved by Loubie Designs.
