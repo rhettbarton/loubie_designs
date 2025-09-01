@@ -33,19 +33,6 @@ TABLE_NAME=$(aws cloudformation describe-stacks \
     --profile $PROFILE_NAME \
     --query "Stacks[0].Outputs[?OutputKey=='PhotoMetadataTableName'].OutputValue" \
     --output text 2>/dev/null)
-CDN_DOMAIN=$(aws cloudformation describe-stacks \
-    --stack-name LoubieDesignsInfrastructureStack-prod \
-    --profile $PROFILE_NAME \
-    --query "Stacks[0].Outputs[?OutputKey=='PhotoDistributionDomain'].OutputValue" \
-    --output text \
-    --no-cli-pager 2>/dev/null)
-
-TABLE_NAME=$(aws cloudformation describe-stacks \
-    --stack-name LoubieDesignsInfrastructureStack-prod \
-    --profile $PROFILE_NAME \
-    --query "Stacks[0].Outputs[?OutputKey=='PhotoMetadataTableName'].OutputValue" \
-    --output text \
-    --no-cli-pager 2>/dev/null)
 
 if [ -z "$CDN_DOMAIN" ] || [ "$CDN_DOMAIN" = "None" ]; then
     echo "⚠️ Warning: Could not get CloudFront domain from CDK stack"

@@ -573,21 +573,6 @@
   transform: translateY(-2px);
 }
 
-.product-count {
-  font-size: 12px;
-  color: var(--accent-color);
-  font-weight: 600;
-  margin-top: 4px;
-  opacity: 0.9;
-}
-
-.featured-count {
-  font-size: 14px;
-  opacity: 0.8;
-  margin-top: 4px;
-  display: block;
-}
-
 /* Enhanced Lightbox Styles */
 .product-lightbox {
   max-width: 95vw;
@@ -612,12 +597,6 @@
   font-weight: 600;
   color: var(--primary-color);
   margin: 0;
-}
-
-.lightbox-image-counter {
-  font-size: 14px;
-  color: var(--text-secondary);
-  font-weight: 500;
 }
 
 .lightbox-content {
@@ -814,10 +793,6 @@
   
   .lightbox-collection-title {
     font-size: 18px;
-  }
-  
-  .lightbox-image-counter {
-    font-size: 13px;
   }
   
   .nav-button {

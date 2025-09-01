@@ -19,15 +19,15 @@ const createCredentialProvider = () => {
     sessionToken: import.meta.env.VITE_AWS_SESSION_TOKEN,
   };
 
-  console.log('🔍 AWS Credential Check:', {
-    region: AWS_CONFIG.region,
-    tableName: AWS_CONFIG.dynamoTableName,
-    cdnDomain: AWS_CONFIG.photoCdnDomain,
-    hasAccessKey: !!credentials.accessKeyId,
-    hasSecretKey: !!credentials.secretAccessKey,
-    hasSessionToken: !!credentials.sessionToken,
-    accessKeyPreview: credentials.accessKeyId ? `${credentials.accessKeyId.substring(0, 8)}...` : 'MISSING'
-  });
+  // console.log('🔍 AWS Credential Check:', {
+  //   region: AWS_CONFIG.region,
+  //   tableName: AWS_CONFIG.dynamoTableName,
+  //   cdnDomain: AWS_CONFIG.photoCdnDomain,
+  //   hasAccessKey: !!credentials.accessKeyId,
+  //   hasSecretKey: !!credentials.secretAccessKey,
+  //   hasSessionToken: !!credentials.sessionToken,
+  //   accessKeyPreview: credentials.accessKeyId ? `${credentials.accessKeyId.substring(0, 8)}...` : 'MISSING'
+  // });
 
   if (!credentials.accessKeyId || !credentials.secretAccessKey) {
     throw new Error(`
@@ -151,7 +151,7 @@ export const fetchProducts = async () => {
     if (!AWS_CONFIG.dynamoTableName) {
       throw new Error('VITE_DYNAMO_TABLE_NAME environment variable is not set');
     }
-    console.log(`🔍 Scanning DynamoDB table: ${AWS_CONFIG.dynamoTableName}`);
+    // console.log(`🔍 Scanning DynamoDB table: ${AWS_CONFIG.dynamoTableName}`);
     const command = new ScanCommand({
       TableName: AWS_CONFIG.dynamoTableName,
       FilterExpression: 'portfolio = :portfolio',
@@ -190,7 +190,7 @@ export const fetchFeaturedProducts = async () => {
     if (!dynamoClient) {
       throw new Error('DynamoDB client not initialized. Check your AWS credentials.');
     }
-    console.log(`🌟 Fetching featured products from: ${AWS_CONFIG.dynamoTableName}`);
+    // console.log(`🌟 Fetching featured products from: ${AWS_CONFIG.dynamoTableName}`);
     // Use Scan with filter since we might not have a GSI set up
     const command = new ScanCommand({
       TableName: AWS_CONFIG.dynamoTableName,
@@ -215,37 +215,6 @@ export const fetchFeaturedProducts = async () => {
 };
 
 /**
- * Fetch products by category from DynamoDB
- */
-export const fetchProductsByCategory = async (category) => {
-  try {
-    if (!dynamoClient) {
-      throw new Error('DynamoDB client not initialized. Check your AWS credentials.');
-    }
-    console.log(`🏷️ Fetching products by category: ${category}`);
-    // Use Scan with filter since CategoryIndex might not exist
-    const command = new ScanCommand({
-      TableName: AWS_CONFIG.dynamoTableName,
-      FilterExpression: 'category = :category AND portfolio = :portfolio',
-      ExpressionAttributeValues: marshall({
-        ':category': category,
-        ':portfolio': true
-      })
-    });
-    const response = await dynamoClient.send(command);
-    return response.Items ? response.Items.map(transformDynamoItem) : [];
-  } catch (error) {
-    console.error('❌ Error fetching products by category from DynamoDB:', error);
-    // Fall back to filtering all products
-    if (error.name === 'ResourceNotFoundException' && error.message.includes('CategoryIndex')) {
-      console.warn('⚠️ CategoryIndex not found, falling back to scan');
-      return fetchProducts().then(products => products.filter(p => p.category === category));
-    }
-    throw error;
-  }
-};
-
-/**
  * Get image URL from CloudFront CDN
  */
 export const getImageUrl = (imagePath) => {
@@ -253,20 +222,6 @@ export const getImageUrl = (imagePath) => {
   // Clean up the path - remove leading slashes and handle full URLs
   const cleanPath = imagePath.replace(/^\/+/, '');
   return `https://${AWS_CONFIG.photoCdnDomain}/${cleanPath}`;
-};
-
-/**
- * Get all categories from products
- */
-export const getCategories = async () => {
-  try {
-    const products = await fetchProducts();
-    const categories = [...new Set(products.map(product => product.category))];
-    return ['all', ...categories.sort()];
-  } catch (error) {
-    console.error('Error getting categories:', error);
-    return ['all'];
-  }
 };
 
 // Fallback data in case AWS services are unavailable
@@ -309,69 +264,5 @@ export const fetchFeaturedProductsWithFallback = async () => {
   } catch (error) {
     console.warn('⚠️ AWS services unavailable for featured products:', error.message);
     return [];
-  }
-};
-
-/**
- * Test AWS connection and credentials
- */
-export const testAWSConnection = async () => {
-  try {
-    console.log('🧪 Testing AWS connection...');
-    
-    if (!dynamoClient) {
-      throw new Error('DynamoDB client not initialized');
-    }
-
-    // Simple operation to test credentials
-    const command = new ScanCommand({
-      TableName: AWS_CONFIG.dynamoTableName,
-      Limit: 1
-    });
-
-    await dynamoClient.send(command);
-    console.log('✅ AWS connection test successful');
-    return true;
-    
-  } catch (error) {
-    console.error('❌ AWS connection test failed:', error);
-    return false;
-  }
-};
-
-/**
- * Debug credentials and environment
- */
-export const debugCredentials = async () => {
-  try {
-    console.log('🔍 Debugging AWS Credentials...');
-    
-    // Check environment variables
-    console.log('Environment variables:');
-    console.log('- VITE_AWS_REGION:', import.meta.env.VITE_AWS_REGION);
-    console.log('- VITE_DYNAMO_TABLE_NAME:', import.meta.env.VITE_DYNAMO_TABLE_NAME);
-    console.log('- VITE_PHOTO_CDN_DOMAIN:', import.meta.env.VITE_PHOTO_CDN_DOMAIN);
-    console.log('- VITE_AWS_ACCESS_KEY_ID:', import.meta.env.VITE_AWS_ACCESS_KEY_ID ? '[SET]' : '[NOT SET]');
-    console.log('- VITE_AWS_SECRET_ACCESS_KEY:', import.meta.env.VITE_AWS_SECRET_ACCESS_KEY ? '[SET]' : '[NOT SET]');
-    console.log('- VITE_AWS_SESSION_TOKEN:', import.meta.env.VITE_AWS_SESSION_TOKEN ? '[SET]' : '[NOT SET]');
-
-    // Test STS call if credentials are available
-    if (import.meta.env.VITE_AWS_ACCESS_KEY_ID && import.meta.env.VITE_AWS_SECRET_ACCESS_KEY) {
-      const { STSClient, GetCallerIdentityCommand } = await import('@aws-sdk/client-sts');
-      const stsClient = new STSClient({ 
-        region: AWS_CONFIG.region,
-        credentials: createCredentialProvider()
-      });
-      const identity = await stsClient.send(new GetCallerIdentityCommand({}));
-      
-      console.log('✅ AWS Identity:', identity);
-      return identity;
-    } else {
-      throw new Error('Credentials not available for STS test');
-    }
-    
-  } catch (error) {
-    console.error('❌ AWS Credentials Debug Failed:', error);
-    throw error;
   }
 };
