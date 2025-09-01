@@ -1,0 +1,268 @@
+// src/services/awsService.js - Using files list from DynamoDB
+
+// AWS Configuration - Using Vite environment variables
+const AWS_CONFIG = {
+  region: import.meta.env.VITE_AWS_REGION || 'us-west-2',
+  photoCdnDomain: import.meta.env.VITE_PHOTO_CDN_DOMAIN,
+  dynamoTableName: import.meta.env.VITE_DYNAMO_TABLE_NAME
+};
+
+// AWS SDK v3 imports
+import { DynamoDBClient, ScanCommand, QueryCommand } from '@aws-sdk/client-dynamodb';
+import { marshall, unmarshall } from '@aws-sdk/util-dynamodb';
+
+// Custom credential provider for browser environment
+const createCredentialProvider = () => {
+  const credentials = {
+    accessKeyId: import.meta.env.VITE_AWS_ACCESS_KEY_ID,
+    secretAccessKey: import.meta.env.VITE_AWS_SECRET_ACCESS_KEY,
+    sessionToken: import.meta.env.VITE_AWS_SESSION_TOKEN,
+  };
+
+  // console.log('🔍 AWS Credential Check:', {
+  //   region: AWS_CONFIG.region,
+  //   tableName: AWS_CONFIG.dynamoTableName,
+  //   cdnDomain: AWS_CONFIG.photoCdnDomain,
+  //   hasAccessKey: !!credentials.accessKeyId,
+  //   hasSecretKey: !!credentials.secretAccessKey,
+  //   hasSessionToken: !!credentials.sessionToken,
+  //   accessKeyPreview: credentials.accessKeyId ? `${credentials.accessKeyId.substring(0, 8)}...` : 'MISSING'
+  // });
+
+  if (!credentials.accessKeyId || !credentials.secretAccessKey) {
+    throw new Error(`
+      Missing AWS credentials. Please ensure your .env.local file contains:
+      - VITE_AWS_ACCESS_KEY_ID
+      - VITE_AWS_SECRET_ACCESS_KEY
+      - VITE_AWS_SESSION_TOKEN (for temporary credentials)
+      
+      Current status:
+      - Access Key ID: ${credentials.accessKeyId ? 'SET' : 'MISSING'}
+      - Secret Access Key: ${credentials.secretAccessKey ? 'SET' : 'MISSING'}
+      - Session Token: ${credentials.sessionToken ? 'SET' : 'MISSING'}
+      
+      💡 Run your get-sso-credentials.sh script and restart the dev server
+    `);
+  }
+
+  return credentials;
+};
+
+// Initialize DynamoDB client with explicit credentials
+let dynamoClient;
+
+try {
+  const credentials = createCredentialProvider();
+  
+  dynamoClient = new DynamoDBClient({
+    region: AWS_CONFIG.region,
+    credentials: credentials,
+  });
+  console.log('✅ DynamoDB client initialized successfully');
+} catch (error) {
+  console.error('❌ Failed to initialize DynamoDB client:', error.message);
+  // Don't throw here, let individual functions handle the error
+}
+
+/**
+ * Convert DynamoDB item to application format
+ * Uses the 'files' attribute from DynamoDB to generate image URLs
+ */
+const transformDynamoItem = (item) => {
+  const product = unmarshall(item);
+  let images = [];
+  
+  // Check if files list exists in DynamoDB
+  if (product.files && Array.isArray(product.files)) {
+    // Use the files list from DynamoDB
+    images = product.files.map((fileName, index) => {
+      // Support both full paths and just filenames
+      const fullPath = fileName.includes('/') 
+        ? fileName 
+        : `${product.folderPath}/${fileName}`;
+      
+      return {
+        file: fullPath,
+        url: `https://${AWS_CONFIG.photoCdnDomain}/${fullPath}`,
+        index: index
+      };
+    });
+  } else if (product.folderPath) {
+    // Fallback: if no files list, just use cover image if available
+    console.warn(`No files list found for product ${product.id}, using cover image only`);
+    if (product.coverImage) {
+      const coverPath = `${product.folderPath}/${product.coverImage}`;
+      images = [{
+        file: coverPath,
+        url: `https://${AWS_CONFIG.photoCdnDomain}/${coverPath}`,
+        index: 0
+      }];
+    }
+  }
+  
+  // Ensure coverImage is first if it exists and isn't already first
+  if (product.coverImage && images.length > 0) {
+    const coverFileName = product.coverImage;
+    const coverIndex = images.findIndex(img => 
+      img.file.endsWith(coverFileName) || img.file === coverFileName
+    );
+    
+    if (coverIndex > 0) {
+      // Move cover image to front
+      const coverImg = images[coverIndex];
+      images.splice(coverIndex, 1);
+      images.unshift(coverImg);
+    } else if (coverIndex === -1) {
+      // Cover image not in files list, add it at the beginning
+      const coverPath = coverFileName.includes('/') 
+        ? coverFileName 
+        : `${product.folderPath}/${coverFileName}`;
+      images.unshift({
+        file: coverPath,
+        url: `https://${AWS_CONFIG.photoCdnDomain}/${coverPath}`,
+        index: -1 // Special index for cover image
+      });
+    }
+  }
+  
+  return {
+    id: product.id,
+    name: product.name,
+    description: product.description,
+    category: product.category,
+    coverImage: product.coverImage ? `${product.folderPath}/${product.coverImage}` : '',
+    coverImageUrl: product.coverImage ? `https://${AWS_CONFIG.photoCdnDomain}/${product.folderPath}/${product.coverImage}` : '',
+    featured: product.featured === true || product.featured === 'true',
+    portfolio: product.portfolio === true || product.portfolio === 'true',
+    folderPath: product.folderPath,
+    images: images,
+    files: product.files || [] // Include original files list for reference
+  };
+};
+
+/**
+ * Fetch all portfolio products from DynamoDB
+ */
+export const fetchProducts = async () => {
+  try {
+    if (!dynamoClient) {
+      throw new Error('DynamoDB client not initialized. Check your AWS credentials.');
+    }
+    if (!AWS_CONFIG.dynamoTableName) {
+      throw new Error('VITE_DYNAMO_TABLE_NAME environment variable is not set');
+    }
+    // console.log(`🔍 Scanning DynamoDB table: ${AWS_CONFIG.dynamoTableName}`);
+    const command = new ScanCommand({
+      TableName: AWS_CONFIG.dynamoTableName,
+      FilterExpression: 'portfolio = :portfolio',
+      ExpressionAttributeValues: marshall({
+        ':portfolio': "true"
+      })
+    });
+    const response = await dynamoClient.send(command);
+    console.log(`✅ Retrieved ${response.Items?.length || 0} portfolio items from DynamoDB`);
+    if (import.meta.env.VITE_DEBUG_AWS === 'true') {
+      console.log('DynamoDB Response:', response);
+    }
+    // Transform items - no async needed since we're not making S3 calls
+    return response.Items ? response.Items.map(transformDynamoItem) : [];
+  } catch (error) {
+    console.error('❌ Error fetching products from DynamoDB:', error);
+    // Enhanced error logging
+    if (error.name === 'CredentialsProviderError') {
+      console.error('🔑 Credential Provider Error - Check your AWS credentials configuration');
+    } else if (error.name === 'ResourceNotFoundException') {
+      console.error(`🏷️ Table not found: ${AWS_CONFIG.dynamoTableName}`);
+    } else if (error.name === 'AccessDeniedException') {
+      console.error('🚫 Access denied - Check your IAM permissions for DynamoDB');
+    } else if (error.message.includes('Credential is missing')) {
+      console.error('🔑 Missing credentials - Run get-sso-credentials.sh and restart dev server');
+    }
+    throw error;
+  }
+};
+
+/**
+ * Fetch featured products from DynamoDB
+ */
+export const fetchFeaturedProducts = async () => {
+  try {
+    if (!dynamoClient) {
+      throw new Error('DynamoDB client not initialized. Check your AWS credentials.');
+    }
+    // console.log(`🌟 Fetching featured products from: ${AWS_CONFIG.dynamoTableName}`);
+    // Use Scan with filter since we might not have a GSI set up
+    const command = new ScanCommand({
+      TableName: AWS_CONFIG.dynamoTableName,
+      FilterExpression: 'featured = :featured AND portfolio = :portfolio',
+      ExpressionAttributeValues: marshall({
+        ':featured': "true",
+        ':portfolio': "true"
+      })
+    });
+    const response = await dynamoClient.send(command);
+    console.log(`✅ Retrieved ${response.Items?.length || 0} featured items from DynamoDB`);
+    return response.Items ? response.Items.map(transformDynamoItem) : [];
+  } catch (error) {
+    console.error('❌ Error fetching featured products from DynamoDB:', error);
+    // If GSI doesn't exist, fall back to scan
+    if (error.name === 'ResourceNotFoundException' && error.message.includes('FeaturedIndex')) {
+      console.warn('⚠️ FeaturedIndex not found, falling back to scan');
+      return fetchProducts().then(products => products.filter(p => p.featured));
+    }
+    throw error;
+  }
+};
+
+/**
+ * Get image URL from CloudFront CDN
+ */
+export const getImageUrl = (imagePath) => {
+  if (!imagePath) return '';
+  // Clean up the path - remove leading slashes and handle full URLs
+  const cleanPath = imagePath.replace(/^\/+/, '');
+  return `https://${AWS_CONFIG.photoCdnDomain}/${cleanPath}`;
+};
+
+// Fallback data in case AWS services are unavailable
+const FALLBACK_DATA = {
+  products: [
+    {
+      id: 'fallback-item',
+      name: 'Sample Quilt',
+      description: 'This is sample data shown when AWS services are unavailable. Please check your credentials and try again.',
+      category: 'Sample',
+      coverImage: '',
+      coverImageUrl: '',
+      featured: "false",
+      portfolio: "true",
+      images: [],
+      files: []
+    }
+  ]
+};
+
+/**
+ * Fetch products with fallback to local data
+ */
+export const fetchProductsWithFallback = async () => {
+  try {
+    const products = await fetchProducts();
+    return products.length > 0 ? products : FALLBACK_DATA.products;
+  } catch (error) {
+    console.warn('⚠️ AWS services unavailable, using fallback data:', error.message);
+    return FALLBACK_DATA.products;
+  }
+};
+
+/**
+ * Fetch featured products with fallback
+ */
+export const fetchFeaturedProductsWithFallback = async () => {
+  try {
+    return await fetchFeaturedProducts();
+  } catch (error) {
+    console.warn('⚠️ AWS services unavailable for featured products:', error.message);
+    return [];
+  }
+};

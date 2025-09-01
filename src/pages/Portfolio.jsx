@@ -1,27 +1,46 @@
+// src/pages/Portfolio.jsx
 import React, { useState, useEffect, useCallback } from 'react'
 import '../styles/Portfolio.css'
-import data from '../data/photos.json'
+import { 
+  fetchProductsWithFallback, 
+  fetchFeaturedProductsWithFallback,
+  getImageUrl
+} from '../services/awsService'
 
 function Portfolio() {
   const [products, setProducts] = useState([])
+  const [featuredProducts, setFeaturedProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
-    // Load products data
+    // Load products data from AWS
     const loadProducts = async () => {
       try {
+        setLoading(true)
+        setError(null)
+        
+        // Fetch both regular and featured products
+        const [allProducts, featuredItems] = await Promise.all([
+          fetchProductsWithFallback(),
+          fetchFeaturedProductsWithFallback()
+        ])
+        
         // Filter only portfolio items
-        const portfolioItems = data.products.filter(product => product.portfolio === true)
+        const portfolioItems = allProducts.filter(product => product.portfolio === true)
         setProducts(portfolioItems)
         setFilteredProducts(portfolioItems)
-        setLoading(false)
-      } catch (error) {
-        console.error('Error loading products:', error)
+        setFeaturedProducts(featuredItems.filter(product => product.portfolio === true))
+        
+      } catch (err) {
+        console.error('Error loading products:', err)
+        setError('Failed to load products. Please try again later.')
+      } finally {
         setLoading(false)
       }
     }
@@ -48,13 +67,26 @@ function Portfolio() {
     setFilteredProducts(filtered)
   }, [products, selectedCategory, searchTerm])
 
-  const featuredProducts = products.filter(product => product.featured === true)
+  // Get unique categories from products
   const categories = ['all', ...new Set(products.map(product => product.category))]
 
   const openLightbox = (product, imageIndex = 0) => {
-    setSelectedProduct(product)
-    setCurrentImageIndex(imageIndex)
-    document.body.style.overflow = 'hidden'
+    // Images are already loaded from DynamoDB files list
+    console.log('Opening lightbox for product:', product);
+    console.log('Product images from files list:', product.images);
+    
+    // Use images from the files list
+    let images = product.images && product.images.length > 0 ? product.images : [];
+    
+    // Fallback to cover image if no images
+    if (images.length === 0 && product.coverImage) {
+      images = [{ file: product.coverImage, url: product.coverImageUrl }];
+    }
+    
+    const productWithImages = { ...product, images };
+    setSelectedProduct(productWithImages);
+    setCurrentImageIndex(Math.min(imageIndex, images.length - 1));
+    document.body.style.overflow = 'hidden';
   }
 
   const closeLightbox = () => {
@@ -64,7 +96,7 @@ function Portfolio() {
   }
 
   const nextImage = useCallback(() => {
-    if (selectedProduct) {
+    if (selectedProduct && selectedProduct.images.length > 0) {
       setCurrentImageIndex((prev) => 
         prev === selectedProduct.images.length - 1 ? 0 : prev + 1
       )
@@ -72,7 +104,7 @@ function Portfolio() {
   }, [selectedProduct])
 
   const prevImage = useCallback(() => {
-    if (selectedProduct) {
+    if (selectedProduct && selectedProduct.images.length > 0) {
       setCurrentImageIndex((prev) => 
         prev === 0 ? selectedProduct.images.length - 1 : prev - 1
       )
@@ -116,6 +148,23 @@ function Portfolio() {
     )
   }
 
+  if (error) {
+    return (
+      <div className="portfolio-loading">
+        <div className="error-message">
+          <h2>Oops! Something went wrong</h2>
+          <p>{error}</p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="btn btn-primary"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="portfolio">
       {/* Featured Reel */}
@@ -131,9 +180,13 @@ function Portfolio() {
                   onClick={() => openLightbox(product)}
                 >
                   <img 
-                    src={`/photos/${product.coverImage}`} 
+                    src={product.coverImageUrl || getImageUrl(product.coverImage)} 
                     alt={product.name}
                     className="featured-image"
+                    onError={(e) => {
+                      e.target.style.display = 'none'
+                      console.warn(`Failed to load image: ${product.coverImageUrl}`)
+                    }}
                   />
                   <div className="featured-overlay">
                     <h3 className="featured-label">{product.name}</h3>
@@ -213,9 +266,13 @@ function Portfolio() {
               >
                 <div className="photo-wrapper">
                   <img 
-                    src={`/photos/${product.coverImage}`} 
+                    src={product.coverImageUrl || getImageUrl(product.coverImage)} 
                     alt={product.name}
                     className="photo-image"
+                    onError={(e) => {
+                      e.target.style.display = 'none'
+                      console.warn(`Failed to load image: ${product.coverImageUrl}`)
+                    }}
                   />
                   <div className="photo-overlay">
                     <h3 className="photo-label">{product.name}</h3>
@@ -263,35 +320,48 @@ function Portfolio() {
             </div>
             
             <div className="lightbox-content">
-              <div className="lightbox-image-container">
-                <img 
-                  src={`/photos/${selectedProduct.images[currentImageIndex].file}`} 
-                  className="lightbox-image"
-                />
-                
-                {selectedProduct.images.length > 1 && (
-                  <>
-                    <button 
-                      className="nav-button prev-button" 
-                      onClick={prevImage}
-                      aria-label="Previous image"
-                    >
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="m15 18-6-6 6-6" stroke="currentColor" strokeWidth="2"/>
-                      </svg>
-                    </button>
-                    <button 
-                      className="nav-button next-button" 
-                      onClick={nextImage}
-                      aria-label="Next image"
-                    >
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="m9 18 6-6-6-6" stroke="currentColor" strokeWidth="2"/>
-                      </svg>
-                    </button>
-                  </>
-                )}
-              </div>
+              {selectedProduct.images && selectedProduct.images.length > 0 ? (
+                <>
+                  <div className="lightbox-image-container">
+                    <img 
+                      src={selectedProduct.images[currentImageIndex]?.url || getImageUrl(selectedProduct.images[currentImageIndex]?.file)} 
+                      alt={`${selectedProduct.name} ${currentImageIndex + 1}`}
+                      className="lightbox-image"
+                      onError={(e) => {
+                        console.warn(`Failed to load lightbox image: ${e.target.src}`)
+                      }}
+                    />
+                    
+                    {selectedProduct.images.length > 1 && (
+                      <>
+                        <button 
+                          className="nav-button prev-button" 
+                          onClick={prevImage}
+                          aria-label="Previous image"
+                        >
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m15 18-6-6 6-6" stroke="currentColor" strokeWidth="2"/>
+                          </svg>
+                        </button>
+                        <button 
+                          className="nav-button next-button" 
+                          onClick={nextImage}
+                          aria-label="Next image"
+                        >
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m9 18 6-6-6-6" stroke="currentColor" strokeWidth="2"/>
+                          </svg>
+                        </button>
+                      </>
+                    )}
+                    
+                  </div>
+                </>
+              ) : (
+                <div className="no-images">
+                  <p>No images available for this item</p>
+                </div>
+              )}
               
               <div className="lightbox-info">
                 <p className="lightbox-description">{selectedProduct.description}</p>
@@ -299,14 +369,18 @@ function Portfolio() {
             </div>
 
             {/* Thumbnail Strip */}
-            {selectedProduct.images.length > 1 && (
+            {selectedProduct.images && selectedProduct.images.length > 1 && (
               <div className="thumbnail-strip">
                 {selectedProduct.images.map((image, index) => (
                   <img
                     key={index}
-                    src={`/photos/${image.file}`}
+                    src={image.url || getImageUrl(image.file)}
+                    alt={`${selectedProduct.name} ${index + 1}`}
                     className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
                     onClick={() => goToImage(index)}
+                    onError={(e) => {
+                      e.target.style.display = 'none'
+                    }}
                   />
                 ))}
               </div>
