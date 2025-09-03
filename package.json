@@ -10,9 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.872.0",
-    "@aws-sdk/client-sts": "^3.876.0",
-    "@aws-sdk/util-dynamodb": "^3.872.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.7.0"
