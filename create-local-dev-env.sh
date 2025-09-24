@@ -1,5 +1,5 @@
 #!/bin/bash
-# create-local-dev-env.sh - Get SSO credentials directly for React development
+# get-sso-credentials.sh - Get SSO credentials directly for React development
 
 set -e
 
