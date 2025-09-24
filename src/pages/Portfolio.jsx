@@ -70,7 +70,11 @@ function Portfolio() {
   // Get unique categories from products
   const categories = ['all', ...new Set(products.map(product => product.category))]
 
-  const openLightbox = (product, imageIndex = 0) => { 
+  const openLightbox = (product, imageIndex = 0) => {
+    // Images are already loaded from DynamoDB files list
+    console.log('Opening lightbox for product:', product);
+    console.log('Product images from files list:', product.images);
+    
     // Use images from the files list
     let images = product.images && product.images.length > 0 ? product.images : [];
     
