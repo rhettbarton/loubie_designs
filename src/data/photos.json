@@ -428,6 +428,166 @@
           "file": "Wall Hanging/Wall Hanging 2.jpg"
         }
       ]
+    },
+    {
+      "id": "quilted-pouch",
+      "name": "Quilted Pouch",
+      "description": "This quilted pouch comes in three sizes and is ready to store small items for your convenience.",
+      "category": "Pouches",
+      "coverImage": "Pouch/Quilted Pouch/Quilted Pouch 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Pouch/Quilted Pouch/Quilted Pouch 1.jpg"
+        },
+        {
+          "file": "Pouch/Quilted Pouch/Quilted Pouch 2.jpg"
+        },
+        {
+          "file": "Pouch/Quilted Pouch/Quilted Pouch 3.jpg"
+        }
+      ]
+    },
+    {
+      "id": "christmas-table-runner",
+      "name": "Christmas Table Runner",
+      "description": "This festive table runner adds a touch of holiday cheer to your dining decor.",
+      "category": "Table Runners",
+      "coverImage": "Table Runner/Christmas Table Runner/Christmas Table Runner 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Table Runner/Christmas Table Runner/Christmas Table Runner 1.jpg"
+        },
+        {
+          "file": "Table Runner/Christmas Table Runner/Christmas Table Runner 2.jpg"
+        },
+        {
+          "file": "Table Runner/Christmas Table Runner/Christmas Table Runner 3.jpg"
+        }
+      ]
+    },
+    {
+      "id": "autumnal-table-runner",
+      "name": "Autumnal Table Runner",
+      "description": "This festive table runner adds a touch of autumn charm to your dining decor.",
+      "category": "Table Runners",
+      "coverImage": "Table Runner/Autumnal Table Runner/Autumnal Table Runner 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Table Runner/Autumnal Table Runner/Autumnal Table Runner 1.jpg"
+        },
+        {
+          "file": "Table Runner/Autumnal Table Runner/Autumnal Table Runner 2.jpg"
+        },
+        {
+          "file": "Table Runner/Autumnal Table Runner/Autumnal Table Runner 3.jpg"
+        }
+      ]
+    },
+    {
+      "id": "christmas-checkerboard-table-runner",
+      "name": "Christmas Checkerboard Table Runner",
+      "description": "This festive table runner adds a touch of holiday cheer to your dining decor.",
+      "category": "Table Runners",
+      "coverImage": "Table Runner/Christmas Checkerboard Table Runner/Christmas Checkerboard Table Runner 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Table Runner/Christmas Checkerboard Table Runner/Christmas Checkerboard Table Runner 1.jpg"
+        },
+        {
+          "file": "Table Runner/Christmas Checkerboard Table Runner/Christmas Checkerboard Table Runner 2.jpg"
+        },
+        {
+          "file": "Table Runner/Christmas Checkerboard Table Runner/Christmas Checkerboard Table Runner 3.jpg"
+        }
+      ]
+    },
+    {
+      "id": "buttercup-large-throw-quilt",
+      "name": "Buttercup Large Throw Quilt",
+      "description": "This large throw features a scrappy floral design, perfect for adding a touch of charm to your living space. Pattern by Tilda.",
+      "category": "Throw Quilts",
+      "coverImage": "Throw Quilt/Buttercup Large Throw Quilt/Buttercup Large Throw Quilt 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Throw Quilt/Buttercup Large Throw Quilt/Buttercup Large Throw Quilt 1.jpg"
+        },
+        {
+          "file": "Throw Quilt/Buttercup Large Throw Quilt/Buttercup Large Throw Quilt 2.jpg"
+        },
+        {
+          "file": "Throw Quilt/Buttercup Large Throw Quilt/Buttercup Large Throw Quilt 3.jpg"
+        }
+      ]
+    },
+    {
+      "id": "reverb-baby-quilt",
+      "name": "Reverb Baby Quilt",
+      "description": "This charming baby quilt features a playful design, perfect for adding a touch of whimsy to your nursery. Pattern by Suzy Quilts.",
+      "category": "Baby Quilts",
+      "coverImage": "Baby Quilt/Reverb Baby Quilt/Reverb Baby Quilt 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Baby Quilt/Reverb Baby Quilt/Reverb Baby Quilt 1.jpg"
+        },
+        {
+          "file": "Baby Quilt/Reverb Baby Quilt/Reverb Baby Quilt 2.jpg"
+        },
+        {
+          "file": "Baby Quilt/Reverb Baby Quilt/Reverb Baby Quilt 3.jpg"
+        }
+      ]
+    },
+    {
+      "id": "reverb-throw-quilt",
+      "name": "Reverb Throw Quilt",
+      "description": "This charming throw quilt features rounded corners and a playful design, perfect for adding a touch of whimsy to your living space. Pattern by Suzy Quilts.",
+      "category": "Throw Quilts",
+      "coverImage": "Throw Quilt/Reverb Throw Quilt/Reverb Throw Quilt 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Throw Quilt/Reverb Throw Quilt/Reverb Throw Quilt 1.jpg"
+        },
+        {
+          "file": "Throw Quilt/Reverb Throw Quilt/Reverb Throw Quilt 2.jpg"
+        },
+        {
+          "file": "Throw Quilt/Reverb Throw Quilt/Reverb Throw Quilt 3.jpg"
+        }
+      ]
+    },
+    {
+      "id": "flat-zipper-pouch",
+      "name": "Flat Zipper Pouch",
+      "description": "This flat zipper pouch comes in several sizes ranging from a small purse organizer up to a laptop case.",
+      "category": "Pouches",
+      "coverImage": "Pouch/Flat Zipper Pouch/Flat Zipper Pouch 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        {
+          "file": "Pouch/Flat Zipper Pouch/Flat Zipper Pouch 1.jpg"
+        },
+        {
+          "file": "Pouch/Flat Zipper Pouch/Flat Zipper Pouch 2.jpg"
+        },
+        {
+          "file": "Pouch/Flat Zipper Pouch/Flat Zipper Pouch 3.jpg"
+        }
+      ]
     }
   ]
 }
