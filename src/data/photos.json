@@ -550,26 +550,6 @@
       ]
     },
     {
-      "id": "reverb-throw-quilt",
-      "name": "Reverb Throw Quilt",
-      "description": "This charming throw quilt features rounded corners and a playful design, perfect for adding a touch of whimsy to your living space. Pattern by Suzy Quilts.",
-      "category": "Throw Quilts",
-      "coverImage": "Throw Quilt/Reverb Throw Quilt/Reverb Throw Quilt 1.jpg",
-      "featured": false,
-      "portfolio": true,
-      "images": [
-        {
-          "file": "Throw Quilt/Reverb Throw Quilt/Reverb Throw Quilt 1.jpg"
-        },
-        {
-          "file": "Throw Quilt/Reverb Throw Quilt/Reverb Throw Quilt 2.jpg"
-        },
-        {
-          "file": "Throw Quilt/Reverb Throw Quilt/Reverb Throw Quilt 3.jpg"
-        }
-      ]
-    },
-    {
       "id": "flat-zipper-pouch",
       "name": "Flat Zipper Pouch",
       "description": "This flat zipper pouch comes in several sizes ranging from a small purse organizer up to a laptop case.",
