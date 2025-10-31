@@ -6,7 +6,7 @@
       "description": "Celtic Crossing 2.0 pattern by Lo & Behold Stitchery. This was a commissioned piece using fabric pre-selected by the customer.",
       "category": "Baby Quilts",
       "coverImage": "Baby Quilt/Celtic Crossing Baby Quilt/Celtic Crossing 1.jpg",
-      "featured": true,
+      "featured": false,
       "portfolio": true,
       "images": [
         { "file": "Baby Quilt/Celtic Crossing Baby Quilt/Celtic Crossing 1.jpg" },
@@ -19,7 +19,7 @@
       "description": "Charming nine patch pattern using vintage floral fabrics and a gingham backing.",
       "category": "Baby Quilts",
       "coverImage": "Baby Quilt/Nine Patch Baby Quilt/Nine Patch 1.jpg",
-      "featured": true,
+      "featured": false,
       "portfolio": true,
       "images": [
         { "file": "Baby Quilt/Nine Patch Baby Quilt/Nine Patch 1.jpg" },
@@ -33,7 +33,7 @@
       "description": "Sawtooth star pattern in two colorways using a variety of vintage fabrics.",
       "category": "Baby Quilts",
       "coverImage": "Baby Quilt/Sawtooth Star Baby Quilt/Sawtooth Star 1.jpg",
-      "featured": true,
+      "featured": false,
       "portfolio": true,
       "images": [
         { "file": "Baby Quilt/Sawtooth Star Baby Quilt/Sawtooth Star 1.jpg" },
@@ -155,7 +155,7 @@
       "description": "Patriotic table runner perfect for Independence Day celebrations.",
       "category": "Table Runners",
       "coverImage": "Table Runner/4th of July Table Runner/4th of July Table Runner 1.jpg",
-      "featured": true,
+      "featured": false,
       "portfolio": true,
       "images": [
         { "file": "Table Runner/4th of July Table Runner/4th of July Table Runner 1.jpg" },
@@ -255,7 +255,7 @@
       "description": "This modern Reverb pattern by Suzy Quilts bring a contemporary style to your home decor.",
       "category": "Throw Quilts",
       "coverImage": "Throw Quilt/Reverb Throw Quilt/Reverb Throw Quilt 1.jpg",
-      "featured": false,
+      "featured": true,
       "portfolio": true,
       "images": [
         { "file": "Throw Quilt/Reverb Throw Quilt/Reverb Throw Quilt 1.jpg" },
@@ -297,7 +297,7 @@
       "description": "This quilted pouch comes in three sizes and is ready to store small items for your convenience.",
       "category": "Pouches",
       "coverImage": "Pouch/Quilted Pouch/Quilted Pouch 1.jpg",
-      "featured": false,
+      "featured": true,
       "portfolio": true,
       "images": [
         { "file": "Pouch/Quilted Pouch/Quilted Pouch 1.jpg" },
