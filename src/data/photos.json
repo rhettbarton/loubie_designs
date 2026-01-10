@@ -49,18 +49,18 @@
       "name": "Ruffle Blanket",
       "description": "A soft and cozy ruffle blanket perfect for snuggling with baby or adding extra warmth to a crib.",
       "category": "Baby Quilts",
-      "coverImage": "Baby Quilt/Ruffle Blanket/Ruffle Blanket.jpg",
+      "coverImage": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 1.jpg",
       "featured": false,
       "portfolio": true,
       "images": [
-        { "file": "Baby Quilt/Ruffle Blanket/Ruffle Blanket.jpg" },
         { "file": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 1.jpg" },
         { "file": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 2.jpg" },
         { "file": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 3.jpg" },
         { "file": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 4.jpg" },
         { "file": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 5.jpg" },
         { "file": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 6.jpg" },
-        { "file": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 7.jpg" }
+        { "file": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 7.jpg" },
+        { "file": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 8.jpg" }
       ]
     },
     {
