@@ -460,6 +460,36 @@
         { "file": "Throw Pillow Cover/Poinsettia Throw Pillow Cover/Poinsettia Throw Pillow Cover 5.jpg" },
         { "file": "Throw Pillow Cover/Poinsettia Throw Pillow Cover/Poinsettia Throw Pillow Cover 6.jpg" }
       ]
+    },
+    {
+      "id": "quilt-coat",
+      "name": "Quilt Coat",
+      "description": "A cozy quilted coat featuring the Spring Picnic quilt pattern by It's Only Fabric and Thread. This uses Sachi's Studio base coat pattern.",
+      "category": "Apparel",
+      "coverImage": "Apparel/Quilt Coat/Quilt Coat 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        { "file": "Apparel/Quilt Coat/Quilt Coat 1.jpg" },
+        { "file": "Apparel/Quilt Coat/Quilt Coat 2.jpg" },
+        { "file": "Apparel/Quilt Coat/Quilt Coat 3.jpg" },
+        { "file": "Apparel/Quilt Coat/Quilt Coat 4.jpg" }
+      ]
+    },
+    {
+      "id": "sweater",
+      "name": "Sweater",
+      "description": "A comfy sweater with a customized quilted design.",
+      "category": "Apparel",
+      "coverImage": "Apparel/Sweater/Sweater 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        { "file": "Apparel/Sweater/Sweater 1.jpg" },
+        { "file": "Apparel/Sweater/Sweater 2.jpg" },
+        { "file": "Apparel/Sweater/Sweater 3.jpg" },
+        { "file": "Apparel/Sweater/Sweater 4.jpg" }
+      ]
     }
   ]
 }
