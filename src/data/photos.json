@@ -443,6 +443,23 @@
         { "file": "Pouch/Flat Zipper Pouch/Flat Zipper Pouch 27.jpg" },
         { "file": "Pouch/Flat Zipper Pouch/Flat Zipper Pouch 28.jpg" }
       ]
+    },
+    {
+      "id": "poinsettia-throw-pillow-cover",
+      "name": "Poinsettia Throw Pillow Cover",
+      "description": "A festive throw pillow cover featuring beautiful poinsettia design. Pattern is Solstice Blooms by Sewspicious.",
+      "category": "Throw Pillow Covers",
+      "coverImage": "Throw Pillow Cover/Poinsettia Throw Pillow Cover/Poinsettia Throw Pillow Cover 1.jpg",
+      "featured": true,
+      "portfolio": true,
+      "images": [
+        { "file": "Throw Pillow Cover/Poinsettia Throw Pillow Cover/Poinsettia Throw Pillow Cover 1.jpg" },
+        { "file": "Throw Pillow Cover/Poinsettia Throw Pillow Cover/Poinsettia Throw Pillow Cover 2.jpg" },
+        { "file": "Throw Pillow Cover/Poinsettia Throw Pillow Cover/Poinsettia Throw Pillow Cover 3.jpg" },
+        { "file": "Throw Pillow Cover/Poinsettia Throw Pillow Cover/Poinsettia Throw Pillow Cover 4.jpg" },
+        { "file": "Throw Pillow Cover/Poinsettia Throw Pillow Cover/Poinsettia Throw Pillow Cover 5.jpg" },
+        { "file": "Throw Pillow Cover/Poinsettia Throw Pillow Cover/Poinsettia Throw Pillow Cover 6.jpg" }
+      ]
     }
   ]
 }
