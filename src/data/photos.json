@@ -45,6 +45,25 @@
       ]
     },
     {
+      "id": "ruffle-blanket",
+      "name": "Ruffle Blanket",
+      "description": "A soft and cozy ruffle blanket perfect for snuggling with baby or adding extra warmth to a crib.",
+      "category": "Baby Quilts",
+      "coverImage": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        { "file": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 1.jpg" },
+        { "file": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 2.jpg" },
+        { "file": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 3.jpg" },
+        { "file": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 4.jpg" },
+        { "file": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 5.jpg" },
+        { "file": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 6.jpg" },
+        { "file": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 7.jpg" },
+        { "file": "Baby Quilt/Ruffle Blanket/Ruffle Blanket 8.jpg" }
+      ]
+    },
+    {
       "id": "handmade-bag",
       "name": "Handmade Bag",
       "description": "Stylish and functional tote bag with quilted detail on the front and interior pockets.",
@@ -423,6 +442,53 @@
         { "file": "Pouch/Flat Zipper Pouch/Flat Zipper Pouch 26.jpg" },
         { "file": "Pouch/Flat Zipper Pouch/Flat Zipper Pouch 27.jpg" },
         { "file": "Pouch/Flat Zipper Pouch/Flat Zipper Pouch 28.jpg" }
+      ]
+    },
+    {
+      "id": "poinsettia-throw-pillow-cover",
+      "name": "Poinsettia Throw Pillow Cover",
+      "description": "A festive throw pillow cover featuring beautiful poinsettia design. Pattern is Solstice Blooms by Sewspicious.",
+      "category": "Throw Pillow Covers",
+      "coverImage": "Throw Pillow Cover/Poinsettia Throw Pillow Cover/Poinsettia Throw Pillow Cover 1.jpg",
+      "featured": true,
+      "portfolio": true,
+      "images": [
+        { "file": "Throw Pillow Cover/Poinsettia Throw Pillow Cover/Poinsettia Throw Pillow Cover 1.jpg" },
+        { "file": "Throw Pillow Cover/Poinsettia Throw Pillow Cover/Poinsettia Throw Pillow Cover 2.jpg" },
+        { "file": "Throw Pillow Cover/Poinsettia Throw Pillow Cover/Poinsettia Throw Pillow Cover 3.jpg" },
+        { "file": "Throw Pillow Cover/Poinsettia Throw Pillow Cover/Poinsettia Throw Pillow Cover 4.jpg" },
+        { "file": "Throw Pillow Cover/Poinsettia Throw Pillow Cover/Poinsettia Throw Pillow Cover 5.jpg" },
+        { "file": "Throw Pillow Cover/Poinsettia Throw Pillow Cover/Poinsettia Throw Pillow Cover 6.jpg" }
+      ]
+    },
+    {
+      "id": "quilt-coat",
+      "name": "Quilt Coat",
+      "description": "A cozy quilted coat featuring the Spring Picnic quilt pattern by It's Only Fabric and Thread. This uses Sachi's Studio base coat pattern.",
+      "category": "Apparel",
+      "coverImage": "Apparel/Quilt Coat/Quilt Coat 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        { "file": "Apparel/Quilt Coat/Quilt Coat 1.jpg" },
+        { "file": "Apparel/Quilt Coat/Quilt Coat 2.jpg" },
+        { "file": "Apparel/Quilt Coat/Quilt Coat 3.jpg" },
+        { "file": "Apparel/Quilt Coat/Quilt Coat 4.jpg" }
+      ]
+    },
+    {
+      "id": "sweater",
+      "name": "Sweater",
+      "description": "A comfy sweater with a customized quilted design.",
+      "category": "Apparel",
+      "coverImage": "Apparel/Sweater/Sweater 1.jpg",
+      "featured": false,
+      "portfolio": true,
+      "images": [
+        { "file": "Apparel/Sweater/Sweater 1.jpg" },
+        { "file": "Apparel/Sweater/Sweater 2.jpg" },
+        { "file": "Apparel/Sweater/Sweater 3.jpg" },
+        { "file": "Apparel/Sweater/Sweater 4.jpg" }
       ]
     }
   ]
