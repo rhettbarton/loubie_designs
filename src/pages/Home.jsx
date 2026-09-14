@@ -18,7 +18,7 @@ function Home() {
           </h1>
           
           <p className="subtitle">
-            Crafted in Boise, Idaho
+            Boise, Idaho
           </p>
           
           <div className="cta-buttons">
