@@ -8,7 +8,7 @@ function Footer() {
         <div className="footer-content">
           <div className="footer-brand">
             <span className="footer-logo">Loubie Designs</span>
-            <p className="footer-tagline">Quilted Goodies</p>
+            <p className="footer-tagline">Handcrafted for you</p>
           </div>
           
           <div className="footer-contact">
@@ -68,7 +68,7 @@ function Footer() {
         </div>
         
         <div className="footer-bottom">
-          <p className="copyright">© 2025 Loubie Designs. All rights reserved.</p>
+          <p className="copyright">© 2026 Loubie Designs. All rights reserved.</p>
         </div>
       </div>
     </footer>
